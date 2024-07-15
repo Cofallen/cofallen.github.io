@@ -16,17 +16,17 @@
   <meta name="author" content="cofallen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简要的关于 c 的应用。可以在 VOFA 中加入，简化代码调用体积。             c 分配空间使用结构体123456789101112131415161718192021222324#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;struct Data &#123;    float *floatArray;">
+    <meta name="description" content="请先掌握 linux 基本用法。             脚本整理日志文件内容增加&gt;&gt;和tee -a都是将输出追加到文件中的方法，但它们的使用场景略有不同。 &gt;&gt;是一种重定向操作符，用于将命令的输出追加到指定文件的末尾。例如，以下命令将ls命令的输出追加到list.txt文件的末尾： 1ls &gt;&gt; list.txt 如果list.txt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C 空间内存分配">
-<meta property="og:url" content="http://example.com/2024/07/14/build-page-by-hexo/index.html">
+<meta property="og:title" content="shell 一些用法">
+<meta property="og:url" content="http://example.com/2024/07/15/old-shell/index.html">
 <meta property="og:site_name" content="cofallen">
-<meta property="og:description" content="简要的关于 c 的应用。可以在 VOFA 中加入，简化代码调用体积。             c 分配空间使用结构体123456789101112131415161718192021222324#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;struct Data &#123;    float *floatArray;">
+<meta property="og:description" content="请先掌握 linux 基本用法。             脚本整理日志文件内容增加&gt;&gt;和tee -a都是将输出追加到文件中的方法，但它们的使用场景略有不同。 &gt;&gt;是一种重定向操作符，用于将命令的输出追加到指定文件的末尾。例如，以下命令将ls命令的输出追加到list.txt文件的末尾： 1ls &gt;&gt; list.txt 如果list.txt">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-14T14:17:20.000Z">
-<meta property="article:modified_time" content="2024-07-15T10:35:33.814Z">
+<meta property="article:published_time" content="2024-07-15T10:25:40.000Z">
+<meta property="article:modified_time" content="2024-07-15T10:41:47.764Z">
 <meta property="article:author" content="cofallen">
-<meta property="article:tag" content="c&#x2F;c++">
+<meta property="article:tag" content="old">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -35,7 +35,7 @@
   
     <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
   
-  <title>C 空间内存分配 - cofallen</title>
+  <title>shell 一些用法 - cofallen</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C 空间内存分配"></span>
+            <span id="subtitle" data-typed-text="shell 一些用法"></span>
           
         </div>
 
@@ -239,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-14 22:17" pubdate>
-          2024年7月14日 晚上
+        <time datetime="2024-07-15 18:25" pubdate>
+          2024年7月15日 晚上
         </time>
       </span>
     
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          474 字
+          1.8k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          4 分钟
+          16 分钟
         
       </span>
     
@@ -307,12 +307,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C 空间内存分配</h1>
+            <h1 id="seo-header">shell 一些用法</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-15T18:35:33+08:00
+                    本文最后更新于 2024-07-15T18:41:47+08:00
                   
                   
 
@@ -322,17 +322,125 @@
             
               <div class="markdown-body">
                 
-                <div class="note note-success">
-            <p>简要的关于 <code>c</code> 的应用。</p><p>可以在 VOFA 中加入，简化代码调用体积。</p>
+                <div class="note note-info">
+            <p>请先掌握 <code>linux</code> 基本用法。</p>
           </div>
 
-<h2 id="c-分配空间"><a href="#c-分配空间" class="headerlink" title="c 分配空间"></a>c 分配空间</h2><h3 id="使用结构体"><a href="#使用结构体" class="headerlink" title="使用结构体"></a>使用结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Data</span> &#123;</span><br>    <span class="hljs-type">float</span> *floatArray;<br>    <span class="hljs-type">char</span> *charArray;<br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-number">5</span>;  <span class="hljs-comment">// 假设有5个浮点数和4个字符</span><br><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Data</span> *<span class="hljs-title">data</span> =</span> (<span class="hljs-keyword">struct</span> Data *)<span class="hljs-built_in">calloc</span>(<span class="hljs-number">1</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> Data));<br>    data-&gt;floatArray = (<span class="hljs-type">float</span> *)<span class="hljs-built_in">calloc</span>(n, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>));<br>    data-&gt;charArray = (<span class="hljs-type">char</span> *)<span class="hljs-built_in">calloc</span>(<span class="hljs-number">4</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>));<br><br>    <span class="hljs-comment">// 现在你可以访问和操作data结构中的浮点数和字符数组了</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-built_in">free</span>(data-&gt;floatArray);<br>    <span class="hljs-built_in">free</span>(data-&gt;charArray);<br>    <span class="hljs-built_in">free</span>(data);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="脚本整理"><a href="#脚本整理" class="headerlink" title="脚本整理"></a>脚本整理</h2><h3 id="日志文件内容增加"><a href="#日志文件内容增加" class="headerlink" title="日志文件内容增加"></a>日志文件内容增加</h3><p><code>&gt;&gt;</code>和<code>tee -a</code>都是将输出追加到文件中的方法，但它们的使用场景略有不同。</p>
+<p><code>&gt;&gt;</code>是一种重定向操作符，用于将命令的输出追加到指定文件的末尾。例如，以下命令将<code>ls</code>命令的输出追加到<code>list.txt</code>文件的末尾：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> &gt;&gt; list.txt<br></code></pre></td></tr></table></figure>
+<p>如果<code>list.txt</code>文件不存在，则会创建该文件并将<code>ls</code>命令的输出写入其中。如果文件已经存在，则会将<code>ls</code>命令的输出追加到文件末尾。</p>
+<p><code>tee -a</code>是一个命令，它将标准输入复制到标准输出和指定文件中。<code>-a</code>选项表示将输出追加到文件的末尾。例如，以下命令将<code>ls</code>命令的输出同时显示在终端上并追加到<code>list.txt</code>文件的末尾：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> | <span class="hljs-built_in">tee</span> -a list.txt<br></code></pre></td></tr></table></figure>
+<p>如果<code>list.txt</code>文件不存在，则会创建该文件并将<code>ls</code>命令的输出写入其中。如果文件已经存在，则会将<code>ls</code>命令的输出追加到文件末尾。</p>
+<p>因此，<code>&gt;&gt;</code>适用于将命令的输出追加到文件中，而<code>tee -a</code>适用于将命令的输出同时显示在终端上并追加到文件中。如果你只需要将输出追加到文件中，那么使用<code>&gt;&gt;</code>可能更简单和直接。如果你需要同时在终端上查看输出并将其追加到文件中，那么使用<code>tee -a</code>可能更方便。</p>
+<h3 id="date-基本用法"><a href="#date-基本用法" class="headerlink" title="date 基本用法"></a>date 基本用法</h3><p><code>date</code>命令用于显示或设置系统的日期和时间。在命令行中，你可以使用<code>date</code>命令来获取当前日期和时间，也可以根据需要格式化输出。</p>
+<p>下面是<code>date</code>命令中常用的<code>+</code>选项的用法：</p>
+<ol>
+<li><p>显示当前日期和时间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>格式化输出日期和时间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span><br></code></pre></td></tr></table></figure>
+<p>这将按照<code>&quot;%Y-%m-%d %H:%M:%S&quot;</code>的格式输出当前日期和时间，例如<code>2024-06-07 12:30:45</code>。</p>
+</li>
+<li><p>显示当前日期（年、月、日）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%Y-%m-%d&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>显示当前时间（时、分、秒）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%H:%M:%S&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>显示当前星期几：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%A&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>显示当前月份：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%B&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>显示当前时间戳（Unix 时间戳）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span> +<span class="hljs-string">&quot;%s&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>这些只是<code>date</code>命令的一些常见用法示例。通过结合不同的格式化选项，你可以根据需要输出各种日期和时间格式。</p>
+<h3 id="管道操作符"><a href="#管道操作符" class="headerlink" title="管道操作符"></a>管道操作符</h3><p>在Bash中，<code>|</code> 和 <code>&amp;</code> 是两个重要的操作符，用于控制命令之间的输入输出和后台执行。</p>
+<ol>
+<li><code>|</code> 管道操作符：<code>|</code> 可以将一个命令的输出传递给另一个命令作为输入。这种方式可以实现命令之间的协作和数据流转。例如：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">command1 | command2<br></code></pre></td></tr></table></figure>
 
-<h3 id="拼接不同类型空间"><a href="#拼接不同类型空间" class="headerlink" title="拼接不同类型空间"></a>拼接不同类型空间</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> n1 = <span class="hljs-number">3</span>;<br>    <span class="hljs-type">int</span> n2 = <span class="hljs-number">4</span>;<br><br>    <span class="hljs-comment">// 分配第一个数组（整数数组）</span><br>    <span class="hljs-type">int</span> *intArray = (<span class="hljs-type">int</span> *)<span class="hljs-built_in">calloc</span>(n1, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n1; i++) &#123;<br>        intArray[i] = i + <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 分配第二个数组（浮点数数组）</span><br>    <span class="hljs-type">float</span> *floatArray = (<span class="hljs-type">float</span> *)<span class="hljs-built_in">calloc</span>(n2, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n2; i++) &#123;<br>        floatArray[i] = i + <span class="hljs-number">0.5</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 创建一个新的数组，将intArray和floatArray拼接起来</span><br>    <span class="hljs-type">int</span> totalSize = n1 + n2;<br>    <span class="hljs-type">void</span> *combinedArray = <span class="hljs-built_in">malloc</span>((n1 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>)) + (n2 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>)));<br><br>    <span class="hljs-comment">// 将intArray和floatArray的内容拷贝到combinedArray</span><br>    <span class="hljs-built_in">memcpy</span>(combinedArray, intArray, n1 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>    <span class="hljs-built_in">memcpy</span>((<span class="hljs-type">char</span> *)combinedArray + n1 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>), floatArray, n2 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>));<br><br>    <span class="hljs-comment">// 现在combinedArray包含了intArray和floatArray的元素</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-built_in">free</span>(intArray);<br>    <span class="hljs-built_in">free</span>(floatArray);<br>    <span class="hljs-built_in">free</span>(combinedArray);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面的命令将 <code>command1</code> 的输出作为 <code>command2</code> 的输入。</p>
+<ol start="2">
+<li><code>&amp;</code> 后台执行操作符：在Bash中，<code>&amp;</code> 用于将命令放入后台执行，使得命令在后台运行而不阻塞当前终端。例如：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> &amp;<br></code></pre></td></tr></table></figure>
 
-<h3 id="动态创建二维数组"><a href="#动态创建二维数组" class="headerlink" title="动态创建二维数组"></a>动态创建二维数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> rows = <span class="hljs-number">3</span>;<br>    <span class="hljs-type">int</span> cols = <span class="hljs-number">4</span>;<br><br>    <span class="hljs-comment">// 分配二维数组</span><br>    <span class="hljs-type">int</span> **array2D = (<span class="hljs-type">int</span> **)<span class="hljs-built_in">calloc</span>(rows, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span> *));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) &#123;<br>        array2D[i] = (<span class="hljs-type">int</span> *)<span class="hljs-built_in">calloc</span>(cols, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>    &#125;<br><br>    <span class="hljs-comment">// 现在你可以使用array2D作为一个3x4的二维数组来存储和访问数据</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) &#123;<br>        <span class="hljs-built_in">free</span>(array2D[i]);<br>    &#125;<br>    <span class="hljs-built_in">free</span>(array2D);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面的命令将 <code>command</code> 放入后台执行。</p>
+<p>关于Bash和Shell的区别：</p>
+<ul>
+<li>Shell 是一个通用术语，用来描述操作系统提供的命令行解释器。Bash 是 Linux 和其他类 Unix 系统上最常用的 Shell。因此，Bash 是 Shell 的一种。</li>
+<li>Shell 是一个命令行解释器，用户可以通过 Shell 输入命令并与操作系统进行交互。Bash 是 GNU 项目的一部分，是 Bourne Shell (sh) 的增强版本，它提供了更多的功能和特性。</li>
+<li>在大多数 Linux 系统中，默认的 Shell 是 Bash，但也有其他 Shell 可供选择，比如 Zsh、Fish 等。每种 Shell 都有自己独特的特性和语法。</li>
+</ul>
+<h3 id="grep-匹配"><a href="#grep-匹配" class="headerlink" title="grep 匹配"></a>grep 匹配</h3><p><code>grep</code> 是一个强大的文本搜索工具，通常用于在文件或标准输入中查找匹配特定模式的行，并将匹配的行打印出来。</p>
+<p>下面是 <code>grep</code> 命令的一般格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep [options] pattern [file...]<br></code></pre></td></tr></table></figure>
 
-<h3 id="动态字符串"><a href="#动态字符串" class="headerlink" title="动态字符串"></a>动态字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">char</span> *str = (<span class="hljs-type">char</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">6</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>));  <span class="hljs-comment">// 分配初始内存空间</span><br>    <span class="hljs-built_in">strcpy</span>(str, <span class="hljs-string">&quot;Hello&quot;</span>);<br><br>    <span class="hljs-comment">// 扩展字符串</span><br>    str = (<span class="hljs-type">char</span> *)<span class="hljs-built_in">realloc</span>(str, <span class="hljs-number">11</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>));  <span class="hljs-comment">// 重新分配内存</span><br>    <span class="hljs-built_in">strcat</span>(str, <span class="hljs-string">&quot; World&quot;</span>);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str);  <span class="hljs-comment">// 输出 &quot;Hello World&quot;</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-built_in">free</span>(str);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>pattern</code> 是你要搜索的模式，可以是普通字符串或正则表达式。</li>
+<li><code>file</code> 是要在其中搜索模式的文件。如果不指定文件，则 <code>grep</code> 会从标准输入中读取数据。</li>
+</ul>
+<p>以下是一些常用的 <code>grep</code> 选项：</p>
+<ul>
+<li><code>-i</code>：忽略大小写。</li>
+<li><code>-v</code>：反转匹配，只输出不匹配的行。</li>
+<li><code>-n</code>：显示匹配行的行号。</li>
+<li><code>-c</code>：仅显示匹配行的计数。</li>
+<li><code>-r</code>：递归地在目录中搜索文件。</li>
+<li><code>-E</code>：启用扩展的正则表达式（支持更多的正则表达式语法）。</li>
+</ul>
+<p>示例用法：</p>
+<ol>
+<li><p>在文件中查找包含特定字符串 “hello” 的行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;hello&quot;</span> file.txt<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在多个文件中递归搜索包含 “error” 的行，并显示行号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep -n -r <span class="hljs-string">&quot;error&quot;</span> /path/to/directory<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用正则表达式查找以 “2024” 开头的行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;^2024&quot;</span> file.txt<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>这些只是 <code>grep</code> 命令的一些基本用法，<code>grep</code> 还有许多其他选项和功能，你可以通过阅读 <code>grep</code> 的 man 手册或者在线文档来了解更多信息。</p>
+<h3 id="grep-与管道操作符"><a href="#grep-与管道操作符" class="headerlink" title="grep 与管道操作符"></a>grep 与管道操作符</h3><p><code>grep</code>命令是一个强大的文本搜索工具，用于在文件或输入流中查找匹配指定模式的文本行。它通常与其他命令结合使用，以实现更复杂的文本处理和过滤操作。以下是一些常见的与<code>grep</code>命令连用的示例：</p>
+<ol>
+<li><strong>结合<code>cat</code>命令</strong>：<code>cat</code>命令用于显示文件内容，结合<code>grep</code>可以在文件中查找特定内容。例如，要查找包含关键字”error”的行，可以使用以下命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> file.txt | grep <span class="hljs-string">&quot;error&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>结合<code>ls</code>命令</strong>：<code>ls</code>命令用于列出目录内容，结合<code>grep</code>可以过滤出特定文件或目录。例如，要列出当前目录中以”.txt”结尾的文件，可以使用以下命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> | grep <span class="hljs-string">&quot;\.txt$&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>结合<code>ps</code>命令</strong>：<code>ps</code>命令用于显示当前进程状态，结合<code>grep</code>可以过滤出特定进程。例如，要查找名为”firefox”的进程，可以使用以下命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps aux | grep <span class="hljs-string">&quot;firefox&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>结合<code>find</code>命令</strong>：<code>find</code>命令用于在指定目录中查找文件，结合<code>grep</code>可以进一步过滤查找结果。例如，要在<code>/var/log</code>目录下查找包含关键字”error”的文件，可以使用以下命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find /var/log -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> grep <span class="hljs-string">&quot;error&quot;</span> &#123;&#125; +<br></code></pre></td></tr></table></figure>
+
+<p>这些是一些常见的与<code>grep</code>命令连用的示例，通过结合不同的命令，可以实现更加复杂和灵活的文本处理和搜索操作。</p>
+<h3 id="添加Ubuntu镜像源"><a href="#添加Ubuntu镜像源" class="headerlink" title="添加Ubuntu镜像源"></a>添加Ubuntu镜像源</h3><p>查看ubuntu版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat /etc/issue<br></code></pre></td></tr></table></figure>
+
+<p>一般路径：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/etc/apt/source.list<br></code></pre></td></tr></table></figure>
+
+<p>下附一些常见的镜像源：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-comment">#######   Ubuntu22.04LTS 清华镜像源   ###############</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span><br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse<br><span class="hljs-meta prompt_"># </span><span class="language-bash">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse</span><br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse<br><span class="hljs-meta prompt_"># </span><span class="language-bash">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse</span><br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse<br><span class="hljs-meta prompt_"># </span><span class="language-bash">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse</span><br>deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse<br><span class="hljs-meta prompt_"># </span><span class="language-bash">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</span><br><span class="hljs-meta prompt_"> </span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">预发布软件源，不建议启用</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="更新镜像源"><a href="#更新镜像源" class="headerlink" title="更新镜像源"></a>更新镜像源</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get update #更新软件列表<br>sudo apt-get upgrade # 更新本地软件<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -344,7 +452,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/c-c/" class="print-no-link">#c/c++</a>
+        <a href="/tags/old/" class="print-no-link">#old</a>
       
     </div>
   
@@ -356,8 +464,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C 空间内存分配</div>
-      <div>http://example.com/2024/07/14/build-page-by-hexo/</div>
+      <div>shell 一些用法</div>
+      <div>http://example.com/2024/07/15/old-shell/</div>
     </div>
     <div class="license-meta">
       
@@ -369,7 +477,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月14日</div>
+          <div>2024年7月15日</div>
         </div>
       
       
@@ -406,15 +514,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/15/old/" title="旧的笔记">
+                      <a href="/2024/07/15/old-mutex/" title="互斥锁的简单运用">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">旧的笔记</span>
+                        <span class="hidden-mobile">互斥锁的简单运用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/07/15/go-test/" title="Go 基础用法">
+                        <span class="hidden-mobile">Go 基础用法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

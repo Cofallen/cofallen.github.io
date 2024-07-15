@@ -1,0 +1,1164 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/2233.png">
+  <link rel="icon" href="/img/bg/2233.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="cofallen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="这是我第三次把这个笔记搬运了。其中大部分为 AI 生成的，对当时的我有意义的内容。本来该将这个博客分开，挂上不同的标签，便于查阅，但是马上要回家了，我就暂时不干了。             杂乱的内容整理 今天大致将原来所学过的知识整理一下，防止AI掉线也算是回忆一下   目录 1. c++ 有关操作 [2. ]  c++ 有关操作多线程编程单线程调用多个函数C++多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="旧的笔记">
+<meta property="og:url" content="http://example.com/2024/07/15/old/index.html">
+<meta property="og:site_name" content="cofallen">
+<meta property="og:description" content="这是我第三次把这个笔记搬运了。其中大部分为 AI 生成的，对当时的我有意义的内容。本来该将这个博客分开，挂上不同的标签，便于查阅，但是马上要回家了，我就暂时不干了。             杂乱的内容整理 今天大致将原来所学过的知识整理一下，防止AI掉线也算是回忆一下   目录 1. c++ 有关操作 [2. ]  c++ 有关操作多线程编程单线程调用多个函数C++多线程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-15T10:22:22.000Z">
+<meta property="article:modified_time" content="2024-07-15T10:36:01.804Z">
+<meta property="article:author" content="cofallen">
+<meta property="article:tag" content="old">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+    <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+  
+  <title>旧的笔记 - cofallen</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>cofallen</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="旧的笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-15 18:22" pubdate>
+          2024年7月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          59 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">旧的笔记</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-07-15T18:36:01+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <div class="note note-danger">
+            <p>这是我第三次把这个笔记搬运了。</p><p>其中大部分为 AI 生成的，对当时的我有意义的内容。本来该将这个博客分开，挂上不同的标签，便于查阅，但是<del>马上要回家了</del>，我就暂时不干了。</p>
+          </div>
+
+<h1 id="杂乱的内容整理"><a href="#杂乱的内容整理" class="headerlink" title="杂乱的内容整理"></a>杂乱的内容整理</h1><blockquote>
+<p>今天大致将原来所学过的知识整理一下，防止AI掉线<br>也算是回忆一下</p>
+</blockquote>
+<ul>
+<li>目录</li>
+<li><a href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B">1. c++ 有关操作</a></li>
+<li>[2. ]</li>
+</ul>
+<h2 id="c-有关操作"><a href="#c-有关操作" class="headerlink" title="c++ 有关操作"></a>c++ 有关操作</h2><h3 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h3><h4 id="单线程调用多个函数"><a href="#单线程调用多个函数" class="headerlink" title="单线程调用多个函数"></a>单线程调用多个函数</h4><p>C++多线程可以一个线程调用多个函数。下面是一个简单的例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-comment">// 函数1：打印数字</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printNumber</span><span class="hljs-params">(<span class="hljs-type">int</span> number)</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Printing number: &quot;</span> &lt;&lt; number &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-comment">// 函数2：打印字符串</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printString</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string&amp; str)</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Printing string: &quot;</span> &lt;&lt; str &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 创建一个线程并调用两个函数</span><br>    <span class="hljs-function">std::thread <span class="hljs-title">myThread</span><span class="hljs-params">([]()&#123;</span></span><br><span class="hljs-params"><span class="hljs-function">        printNumber(<span class="hljs-number">42</span>);</span></span><br><span class="hljs-params"><span class="hljs-function">        printString(<span class="hljs-string">&quot;Hello, world!&quot;</span>);</span></span><br><span class="hljs-params"><span class="hljs-function">    &#125;)</span></span>;<br><br>    <span class="hljs-comment">// 等待线程执行完毕</span><br>    myThread.<span class="hljs-built_in">join</span>();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在上面的示例中，我们创建了一个线程<code>myThread</code>，该线程同时调用了<code>printNumber</code>和<code>printString</code>两个函数。在<code>main</code>函数中，我们使用<code>join</code>等待线程执行完毕。当程序运行时，会输出以下结果：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">Printing <span class="hljs-built_in">number</span>: <span class="hljs-number">42</span><br>Printing <span class="hljs-built_in">string</span>: Hello, world!<br></code></pre></td></tr></table></figure>
+
+<p>这表明两个函数在同一个线程中被顺序调用。注意，这里的调用顺序是不确定的，因为线程的执行顺序取决于操作系统的调度策略。</p>
+<h3 id="select-监视函数用法和读写操作"><a href="#select-监视函数用法和读写操作" class="headerlink" title="select 监视函数用法和读写操作"></a>select 监视函数用法和读写操作</h3><h4 id="select-函数用法"><a href="#select-函数用法" class="headerlink" title="select 函数用法"></a>select 函数用法</h4><p><code>select</code>函数是一个在Unix和类Unix系统上常用的系统调用，用于在一组文件描述符上等待某种事件的发生。它主要用于实现I&#x2F;O多路复用，允许程序同时监视多个文件描述符，一旦其中任何一个文件描述符准备好进行读、写或者出现异常，<code>select</code>函数就会返回，从而允许程序进行相应的I&#x2F;O操作。</p>
+<p><code>select</code>函数的基本用法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">select</span><span class="hljs-params">(<span class="hljs-type">int</span> nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, <span class="hljs-keyword">struct</span> timeval *timeout)</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>nfds</code> 是待监视的文件描述符集合中所有文件描述符的最大值加1。</li>
+<li><code>readfds</code>、<code>writefds</code> 和 <code>exceptfds</code> 分别是待监视的文件描述符集合，用于监视读、写和异常情况。</li>
+<li><code>timeout</code> 是一个指向 <code>struct timeval</code> 结构的指针，用于设置超时时间。</li>
+</ul>
+<p>以下是一个简单的例子，说明如何使用<code>select</code>函数来监视文件描述符集合中的文件描述符：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    fd_set readfds;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timeval</span> <span class="hljs-title">tv</span>;</span><br>    <span class="hljs-type">int</span> retval;<br><br>    <span class="hljs-comment">// 清空并设置文件描述符集合</span><br>    FD_ZERO(&amp;readfds);<br>    FD_SET(STDIN_FILENO, &amp;readfds);<br><br>    <span class="hljs-comment">// 设置超时时间为5秒</span><br>    tv.tv_sec = <span class="hljs-number">5</span>;<br>    tv.tv_usec = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-comment">// 监视文件描述符集合中的文件描述符</span><br>    retval = select(STDIN_FILENO + <span class="hljs-number">1</span>, &amp;readfds, <span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>, &amp;tv);<br><br>    <span class="hljs-keyword">if</span> (retval == <span class="hljs-number">-1</span>) &#123;<br>        perror(<span class="hljs-string">&quot;select()&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (retval) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Data is available now.\n&quot;</span>);<br>        <span class="hljs-comment">// 在这里进行读操作</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;No data within 5 seconds.\n&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们使用<code>select</code>函数来监视标准输入（<code>STDIN_FILENO</code>），并设置了一个5秒的超时时间。如果在5秒内有数据可读，<code>select</code>函数将返回一个大于0的值，表示有数据可读；否则，将返回0，表示超时；如果出现错误，将返回-1。</p>
+<p>其中，select所需fd产生方法：</p>
+<p>在这段代码中，<code>FD_ZERO</code> 和 <code>FD_SET</code> 是宏，通常用于操作文件描述符集合。这些宏通常是为了方便地操纵文件描述符集合而定义的。以下是它们的用法：</p>
+<ul>
+<li><p><code>FD_ZERO(fd_set *set)</code>：用于将指定的文件描述符集合清空，即将其所有位都设置为0。</p>
+</li>
+<li><p><code>FD_SET(int fd, fd_set *set)</code>：用于将指定的文件描述符加入到文件描述符集合中。</p>
+</li>
+</ul>
+<p>在上述代码中，首先通过调用 <code>FD_ZERO(&amp;readfds)</code> 将 <code>readfds</code> 文件描述符集合清空，以确保其中不包含任何文件描述符。接着，通过调用 <code>FD_SET(STDIN_FILENO, &amp;readfds)</code> 将标准输入文件描述符 <code>STDIN_FILENO</code> 加入到 <code>readfds</code> 文件描述符集合中，以便在接下来的 <code>select</code> 调用中监视标准输入。</p>
+<p><code>STDIN_FILENO</code> 是一个宏定义，通常用于表示标准输入的文件描述符。在 POSIX 系统中，它的值通常是 0。因此，当我们使用 <code>STDIN_FILENO</code> 时，实际上是在使用文件描述符 0，表示标准输入流。</p>
+<h4 id="读写操作"><a href="#读写操作" class="headerlink" title="读写操作"></a>读写操作</h4><p><code>read</code> 和 <code>write</code> 函数是在 Unix 和类 Unix 系统上用于进行文件 I&#x2F;O 操作的函数。</p>
+<ul>
+<li><p><code>read</code> 函数的用法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">ssize_t</span> <span class="hljs-title function_">read</span><span class="hljs-params">(<span class="hljs-type">int</span> fd, <span class="hljs-type">void</span> *buf, <span class="hljs-type">size_t</span> count)</span>;<br></code></pre></td></tr></table></figure>
+<p>这个函数用于从文件描述符 <code>fd</code> 所指向的文件中读取 <code>count</code> 个字节的数据到 <code>buf</code> 中。它返回实际读取的字节数，如果返回值为 0，表示已经到达文件末尾，返回值为 -1 表示出现了错误。</p>
+</li>
+<li><p><code>write</code> 函数的用法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">ssize_t</span> <span class="hljs-title function_">write</span><span class="hljs-params">(<span class="hljs-type">int</span> fd, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *buf, <span class="hljs-type">size_t</span> count)</span>;<br></code></pre></td></tr></table></figure>
+<p>这个函数用于将 <code>buf</code> 中的 <code>count</code> 个字节数据写入到文件描述符 <code>fd</code> 所指向的文件中。它返回实际写入的字节数，如果返回值为 -1，表示出现了错误。</p>
+</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> fd = open(<span class="hljs-string">&quot;output.txt&quot;</span>, O_CREAT | O_WRONLY, <span class="hljs-number">0644</span>);<br>    <span class="hljs-keyword">if</span> (fd == <span class="hljs-number">-1</span>) &#123;<br>        perror(<span class="hljs-string">&quot;open&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *buffer = <span class="hljs-string">&quot;Hello, World!\n&quot;</span>;<br>    <span class="hljs-type">ssize_t</span> bytes_written = write(fd, buffer, <span class="hljs-built_in">strlen</span>(buffer));<br>    <span class="hljs-keyword">if</span> (bytes_written == <span class="hljs-number">-1</span>) &#123;<br>        perror(<span class="hljs-string">&quot;write&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Successfully wrote %zd bytes\n&quot;</span>, bytes_written);<br>    &#125;<br><br>    close(fd);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，我们首先使用 <code>open</code> 函数打开一个名为 “output.txt” 的文件，然后使用 <code>write</code> 函数将字符串 “Hello, World!\n” 写入到这个文件中。最后关闭文件描述符。</p>
+<h3 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h3><h4 id="简略掌握"><a href="#简略掌握" class="headerlink" title="简略掌握"></a>简略掌握</h4><p>在C++中，有许多用于操作字符串的函数。以下是一些常用的字符串操作函数，以及它们的详细用法：</p>
+<ol>
+<li>**<code>std::string::length</code>**：这个函数返回字符串的长度，即字符串中的字符数。例如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br>std::cout &lt;&lt; str.<span class="hljs-built_in">length</span>();  <span class="hljs-comment">// 输出 13</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>**<code>std::string::substr</code>**：这个函数用于从字符串中提取子字符串。它有两个版本，一个版本接受一个参数，另一个版本接受两个参数。例如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br>std::string sub1 = str.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>);  <span class="hljs-comment">// 从第一个位置开始提取子字符串</span><br>std::string sub2 = str.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>);  <span class="hljs-comment">// 从第一个位置开始提取3个字符的子字符串</span><br>std::cout &lt;&lt; sub1 &lt;&lt; std::endl;  <span class="hljs-comment">// 输出 &quot;Hello, World!&quot;</span><br>std::cout &lt;&lt; sub2 &lt;&lt; std::endl;  <span class="hljs-comment">// 输出 &quot;Hel&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>**<code>std::string::find</code>**：这个函数用于在字符串中查找子字符串。如果找到了，它会返回子字符串的第一个字符在字符串中的位置；如果没有找到，它会返回<code>std::string::npos</code>。例如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br><span class="hljs-type">size_t</span> pos = str.<span class="hljs-built_in">find</span>(<span class="hljs-string">&quot;World&quot;</span>);<br><span class="hljs-keyword">if</span> (pos != std::string::npos) &#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Found at position &quot;</span> &lt;&lt; pos &lt;&lt; std::endl;  <span class="hljs-comment">// 输出 &quot;Found at position 7&quot;</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Not found&quot;</span> &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>**<code>std::string::replace</code>**：这个函数用于替换字符串中的子字符串。例如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br>str.<span class="hljs-built_in">replace</span>(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&quot;Hi&quot;</span>);  <span class="hljs-comment">// 用&quot;Hi&quot;替换从第一个位置开始的5个字符</span><br>std::cout &lt;&lt; str &lt;&lt; std::endl;  <span class="hljs-comment">// 输出 &quot;Hi, World!&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>**<code>std::string::erase</code>**：这个函数用于删除字符串中的字符。它有两个版本，一个版本接受一个参数，另一个版本接受两个参数。例如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br>str.<span class="hljs-built_in">erase</span>(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>);  <span class="hljs-comment">// 删除从第一个位置开始的5个字符</span><br>std::cout &lt;&lt; str &lt;&lt; std::endl;  <span class="hljs-comment">// 输出 &quot;World!&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>**<code>std::string::c_str</code>**：这个函数用于返回一个指向以空字符结尾的字符数组的指针，这个字符数组包含了字符串的内容。例如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">char</span>* cstr = str.<span class="hljs-built_in">c_str</span>();<br>std::cout &lt;&lt; cstr &lt;&lt; std::endl;  <span class="hljs-comment">// 输出 &quot;Hello, World!&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="erase-用法"><a href="#erase-用法" class="headerlink" title="erase 用法"></a>erase 用法</h4><p>在C++中，<code>erase</code>是<code>std::string</code>类的一个成员函数，用于从字符串中删除指定位置的字符或一定范围内的字符。它有多种用法，以下是一些详细的例子：</p>
+<ol>
+<li><strong>删除单个字符</strong>：你可以使用<code>erase</code>来删除字符串中的单个字符。例如，以下代码将从字符串<code>str</code>的第一个位置开始删除一个字符：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello&quot;</span>;<br>str.<span class="hljs-built_in">erase</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>);  <span class="hljs-comment">// 删除从第一个位置开始的一个字符</span><br>std::cout &lt;&lt; str;  <span class="hljs-comment">// 输出 &quot;ello&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+<ol start="2">
+<li><strong>删除一定范围内的字符</strong>：你也可以使用<code>erase</code>来删除字符串中的一定范围内的字符。例如，以下代码将从字符串<code>str</code>的第一个位置开始删除3个字符：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello&quot;</span>;<br>str.<span class="hljs-built_in">erase</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>);  <span class="hljs-comment">// 删除从第一个位置开始的3个字符</span><br>std::cout &lt;&lt; str;  <span class="hljs-comment">// 输出 &quot;lo&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li><strong>删除所有满足条件的字符</strong>：你可以使用<code>erase</code>和<code>std::remove_if</code>算法来删除字符串中所有满足某个条件的字符。例如，以下代码将从字符串<code>str</code>中删除所有的空格：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello World&quot;</span>;<br>str.<span class="hljs-built_in">erase</span>(std::<span class="hljs-built_in">remove_if</span>(str.<span class="hljs-built_in">begin</span>(), str.<span class="hljs-built_in">end</span>(), ::isspace), str.<span class="hljs-built_in">end</span>());<br>std::cout &lt;&lt; str;  <span class="hljs-comment">// 输出 &quot;HelloWorld&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+<p>在这个例子中，<code>std::remove_if</code>算法会将满足<code>::isspace</code>条件的字符移到字符串的末尾，然后<code>erase</code>函数会删除这些字符。</p>
+<h4 id="substr-用法举例"><a href="#substr-用法举例" class="headerlink" title="substr 用法举例"></a>substr 用法举例</h4><p>在C++中，<code>substr</code>是<code>std::string</code>类的一个成员函数，用于从字符串中提取子字符串。它有两个版本，一个版本接受一个参数，另一个版本接受两个参数。以下是详细的例子：</p>
+<ol>
+<li><strong>接受一个参数的版本</strong>：这个版本的<code>substr</code>函数接受一个参数，这个参数是从哪个位置开始提取子字符串。例如，以下代码将从字符串<code>str</code>的第一个位置开始提取子字符串：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br>std::string sub = str.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>);  <span class="hljs-comment">// 从第一个位置开始提取子字符串</span><br>std::cout &lt;&lt; sub;  <span class="hljs-comment">// 输出 &quot;Hello, World!&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li><strong>接受两个参数的版本</strong>：这个版本的<code>substr</code>函数接受两个参数，第一个参数是从哪个位置开始提取子字符串，第二个参数是提取多少个字符。例如，以下代码将从字符串<code>str</code>的第一个位置开始提取3个字符的子字符串：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::string str = <span class="hljs-string">&quot;Hello, World!&quot;</span>;<br>std::string sub = str.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>);  <span class="hljs-comment">// 从第一个位置开始提取3个字符的子字符串</span><br>std::cout &lt;&lt; sub;  <span class="hljs-comment">// 输出 &quot;Hel&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>在这个例子中，<code>substr</code>函数从字符串<code>str</code>的第一个位置开始提取3个字符的子字符串，然后将这个子字符串赋值给<code>sub</code>。</p>
+<h4 id="stof-stoi-用法举例"><a href="#stof-stoi-用法举例" class="headerlink" title="stof&#x2F;stoi 用法举例"></a>stof&#x2F;stoi 用法举例</h4><p><code>std::stof</code>是C++标准库中的一个函数，用于将字符串转换为单精度浮点数（float）。它的用法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">float</span> <span class="hljs-title">stof</span> <span class="hljs-params">(<span class="hljs-type">const</span> string&amp; str, <span class="hljs-type">size_t</span>* idx = <span class="hljs-number">0</span>)</span></span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>str</code>：要转换为浮点数的字符串。</li>
+<li><code>idx</code>：可选参数，指向存储转换结束位置的指针。</li>
+</ul>
+<p>以下是一个示例，演示了如何使用<code>std::stof</code>函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::string str = <span class="hljs-string">&quot;3.14159&quot;</span>;<br>    <span class="hljs-type">size_t</span> idx;  <span class="hljs-comment">// 用于存储转换结束位置的索引</span><br>    <span class="hljs-type">float</span> f = std::<span class="hljs-built_in">stof</span>(str, &amp;idx);<br><br>    std::cout &lt;&lt; <span class="hljs-string">&quot;The converted float is &quot;</span> &lt;&lt; f &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;The index of the next character after the float is &quot;</span> &lt;&lt; idx &lt;&lt; std::endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们将字符串”3.14159”转换为浮点数，并打印出转换后的浮点数以及转换结束位置的索引。</p>
+<p>当使用<code>std::stoi</code>时，你需要提供以下参数：</p>
+<ol>
+<li><strong>字符串</strong>：这是要转换为整数的输入字符串。</li>
+<li><strong>指向size_t类型对象的指针</strong>（可选）：用于存储转换后的最后一个字符的索引。如果不需要此信息，可以将其设置为nullptr。</li>
+<li><strong>基数</strong>（可选，默认为10）：指定数字的进制。例如，如果你想解析一个十六进制数字，你可以将基数设置为16。</li>
+</ol>
+<p>下面是一个简单的例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::string str = <span class="hljs-string">&quot;12345&quot;</span>;<br>    <span class="hljs-type">size_t</span> pos; <span class="hljs-comment">// 用于存储转换后的最后一个字符的索引</span><br>    <span class="hljs-type">int</span> num = std::<span class="hljs-built_in">stoi</span>(str, &amp;pos);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;The integer value is: &quot;</span> &lt;&lt; num &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;The index of the last character processed is: &quot;</span> &lt;&lt; pos &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，字符串”12345”被转换为整数12345并存储在变量<code>num</code>中。变量<code>pos</code>将包含转换后的最后一个字符的索引。</p>
+<h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><p>在C++中，可以通过重载()运算符来实现仿函数（Function Object）。一个常见的示例是实现一个加法仿函数，让其能够像函数一样接受整数参数并返回加法结果。以下是一个简单的示例代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> &amp;ltiostream&amp;gt</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Adder</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> x + <span class="hljs-number">10</span>;<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    Adder adder;<br>    <span class="hljs-type">int</span> result = <span class="hljs-built_in">adder</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// 实际上调用了 adder.operator()(5)</span><br><br>    std::cout &amp;lt&amp;lt <span class="hljs-string">&quot;Result: &quot;</span> &amp;lt&amp;lt result &amp;lt&amp;lt std::endl; <span class="hljs-comment">// 输出: Result: 15</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>Adder</code>类重载了<code>()</code>运算符，使得我们可以像调用函数一样使用<code>Adder</code>类的对象<code>adder</code>，并传入一个整数参数。当我们调用<code>adder(5)</code>时，实际上会调用<code>Adder</code>类中重载的<code>()</code>运算符函数，这个函数接受一个整数参数并返回<code>x + 10</code>的结果，最终输出结果为15。</p>
+<h2 id="linux-有关整理"><a href="#linux-有关整理" class="headerlink" title="linux 有关整理"></a>linux 有关整理</h2><blockquote>
+<p>这里我就挑几个重要的写<br>太多了，来不及粘贴</p>
+</blockquote>
+<h3 id="ssh-协议连接"><a href="#ssh-协议连接" class="headerlink" title="ssh 协议连接"></a>ssh 协议连接</h3><p>这个命令是用于通过SSH协议（Secure Shell）连接到远程主机的命令。具体来说，<code>ssh non@192.168.51.8</code>的含义如下：</p>
+<ul>
+<li><code>ssh</code>: 是用于启动SSH客户端的命令。</li>
+<li><code>non</code>: 这是一个用户名，表示您希望使用用户名<code>non</code>来连接到远程主机。</li>
+<li><code>192.168.51.8</code>: 这是远程主机的IP地址或主机名，表示您希望连接到IP地址为<code>192.168.51.8</code>的远程主机。</li>
+</ul>
+<p>因此，当您运行<code>ssh non@192.168.51.8</code>时，您正在尝试使用用户名<code>non</code>通过SSH连接到IP地址为<code>192.168.51.8</code>的远程主机。如果输入密码正确并且远程主机允许该用户通过SSH登录，您将成功建立连接并获得远程主机的Shell访问权限。</p>
+<p>通过SSH协议（Secure Shell）连接到服务器或电脑是一种安全的远程访问方式，可以在不安全的网络环境下进行加密通信。下面是通过SSH连接到服务器或电脑的一般步骤：</p>
+<h4 id="连接到服务器或电脑的步骤："><a href="#连接到服务器或电脑的步骤：" class="headerlink" title="连接到服务器或电脑的步骤："></a>连接到服务器或电脑的步骤：</h4><ol>
+<li><p><strong>打开终端</strong>：在本地计算机上打开终端或命令行界面。</p>
+</li>
+<li><p><strong>输入SSH命令</strong>：使用以下命令连接到目标主机：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ssh</span> username<span class="hljs-variable">@hostname</span><br></code></pre></td></tr></table></figure>
+<p>其中，<code>username</code>是您在远程主机上的用户名，<code>hostname</code>是远程主机的IP地址或域名。</p>
+</li>
+<li><p><strong>输入密码</strong>：如果是第一次连接，系统可能会询问是否要添加主机到已知主机列表中，输入<code>yes</code>后会要求输入密码。</p>
+</li>
+<li><p><strong>输入密码</strong>：输入您的远程主机密码（密码不会显示在屏幕上）。</p>
+</li>
+<li><p><strong>成功连接</strong>：如果密码正确，您将会成功连接到远程主机，可以开始在远程主机上执行命令。</p>
+</li>
+</ol>
+<h4 id="SSH连接原理："><a href="#SSH连接原理：" class="headerlink" title="SSH连接原理："></a>SSH连接原理：</h4><ul>
+<li><p><strong>加密通信</strong>：SSH通过加密技术确保通信过程中的数据传输安全，包括身份验证、命令传输和数据传输等。</p>
+</li>
+<li><p><strong>公钥加密</strong>：SSH使用公钥加密技术来进行身份验证和建立安全连接。当您连接到远程主机时，客户端和服务器之间会交换公钥，然后使用这些密钥来加密通信。</p>
+</li>
+<li><p><strong>安全认证</strong>：在连接时，SSH要求用户提供密码或者使用公钥进行认证。这种方式可以防止未经授权的用户访问远程主机。</p>
+</li>
+<li><p><strong>端到端加密</strong>：SSH协议提供端到端的加密，确保数据在传输过程中不会被窃取或篡改。</p>
+</li>
+</ul>
+<p>总的来说，SSH协议通过加密通信、安全认证和端到端加密等技术，为用户提供了一种安全、加密的远程访问方式，使得用户可以在不安全的网络环境下安全地访问远程主机。ii</p>
+<h3 id="linux-联网操作："><a href="#linux-联网操作：" class="headerlink" title="linux 联网操作："></a>linux 联网操作：</h3><p>Linux服务器连接到互联网通常需要配置网络连接。以下是连接Linux服务器到互联网的一般步骤：</p>
+<ol>
+<li><p><strong>检查网络连接</strong>：首先，确保服务器的网络接口是正常连接的，可以通过以下命令检查网络接口状态：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">ifconfig</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置网络接口</strong>：您可以通过编辑网络配置文件来配置网络接口。在大多数Linux发行版中，网络配置文件通常位于<code>/etc/network/interfaces</code>或者<code>/etc/sysconfig/network-scripts/ifcfg-&lt;interface&gt;</code>。</p>
+</li>
+<li><p><strong>配置IP地址</strong>：为服务器分配一个IP地址，可以是静态IP地址或者动态分配IP地址（DHCP）。</p>
+</li>
+<li><p><strong>配置网关</strong>：设置默认网关，以便服务器知道如何路由到互联网。</p>
+</li>
+<li><p><strong>配置DNS</strong>：配置DNS服务器，以便服务器能够解析域名。</p>
+</li>
+<li><p><strong>重启网络服务</strong>：在完成配置后，您可能需要重启网络服务以使更改生效。您可以使用以下命令重启网络服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl restart networking<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>测试连接</strong>：最后，您可以通过ping命令测试服务器是否能够访问互联网。例如，尝试ping一个已知的互联网地址：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-built_in">ping</span> www.google.com<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>通过以上步骤，您可以配置Linux服务器的网络连接，使其能够连接到互联网并进行通信。如果您遇到任何问题，可以检查网络配置文件以及网络连接状态，以便进行故障排除。</p>
+<h3 id="bashrc-配置bash"><a href="#bashrc-配置bash" class="headerlink" title="bashrc 配置bash"></a>bashrc 配置bash</h3><p>要让Linux命令窗口永久具有颜色高亮效果，您可以通过修改终端配置文件来实现。具体步骤可能会因终端类型和Linux发行版而有所不同，以下是一般步骤：</p>
+<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p><strong>找到终端配置文件</strong>：不同的终端可能会使用不同的配置文件。一般来说，常见的终端配置文件包括：</p>
+<ul>
+<li><strong>Bash shell</strong>：<code>~/.bashrc</code> 或 <code>~/.bash_profile</code></li>
+<li><strong>Zsh shell</strong>：<code>~/.zshrc</code></li>
+<li><strong>GNOME终端</strong>：可以在终端的首选项中设置</li>
+<li><strong>其他终端</strong>：具体取决于您使用的终端类型</li>
+</ul>
+</li>
+<li><p><strong>编辑配置文件</strong>：使用文本编辑器打开相应的配置文件，添加设置文本颜色的命令。例如，您可以添加类似下面的命令来设置提示符为绿色：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PS1=<span class="hljs-string">&quot;\[\033[0;32m\][\u@\h \W]\$ \[\033[0m\]&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>这个命令会将提示符设置为绿色。</p>
+</li>
+<li><p><strong>保存并生效</strong>：保存配置文件并使更改生效。您可以通过执行以下命令使更改生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重新打开终端</strong>：关闭当前终端窗口并重新打开一个新的终端窗口，您应该能看到新的颜色设置生效。</p>
+</li>
+</ol>
+<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h4><ul>
+<li>在编辑配置文件时，请确保您知道您在做什么，以免意外导致终端无法正常工作。</li>
+<li>不同的终端可能需要不同的设置语法和命令，具体取决于您使用的终端类型。</li>
+<li>永久更改终端颜色可能会影响可读性，因此请谨慎选择颜色设置。</li>
+</ul>
+<p>请根据您使用的终端类型和个人喜好，调整颜色设置以满足您的需求。</p>
+<blockquote>
+<p>注意事项：</p>
+<p>bashrc 位置不同，作用范围也不同，分为home和root</p>
+<p>root可以sudo -i开启root模式</p>
+<p>bashrc还可以搞快捷键</p>
+</blockquote>
+<h2 id="docker-docker-compose-整理"><a href="#docker-docker-compose-整理" class="headerlink" title="docker&#x2F;docker-compose 整理"></a>docker&#x2F;docker-compose 整理</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>Docker Compose 是一个用于定义和运行多个 Docker 容器应用的工具。它通过一个单独的 YAML 文件（通常命名为docker-compose.yml）来配置应用的服务，然后使用这个文件来创建和管理这些服务。Docker Compose 可以大大简化多容器应用的部署和管理过程。</p>
+<h3 id="Docker-Compose-的工作原理："><a href="#Docker-Compose-的工作原理：" class="headerlink" title="Docker Compose 的工作原理："></a>Docker Compose 的工作原理：</h3><ol>
+<li><p><strong>编写 docker-compose.yml 文件</strong>：用户首先需要编写一个 docker-compose.yml 文件，该文件定义了应用的服务、网络、卷等配置。在这个文件中，用户可以指定每个服务的镜像、端口映射、环境变量、依赖关系等信息。</p>
+</li>
+<li><p><strong>启动容器</strong>：用户使用 <code>docker-compose up</code> 命令来启动应用程序。Docker Compose 将会根据docker-compose.yml文件中的配置来启动所需的容器。</p>
+</li>
+<li><p><strong>构建镜像</strong>：如果在 docker-compose.yml 中指定的镜像不存在，Docker Compose 将会根据 Dockerfile 来构建镜像。Dockerfile 是一个包含了构建镜像所需指令的文本文件，定义了如何构建 Docker 镜像。Docker Compose 会自动查找当前目录下的 Dockerfile 来构建镜像。</p>
+</li>
+<li><p><strong>容器间通信</strong>：Docker Compose 会自动创建一个默认网络，所有在同一个 docker-compose.yml 文件中定义的服务都会连接到这个网络上。这样，不同的容器就可以通过服务名相互通信。</p>
+</li>
+</ol>
+<h3 id="如何通过-yml-文件构建镜像和容器："><a href="#如何通过-yml-文件构建镜像和容器：" class="headerlink" title="如何通过 .yml 文件构建镜像和容器："></a>如何通过 .yml 文件构建镜像和容器：</h3><ol>
+<li><p><strong>构建镜像</strong>：在 docker-compose.yml 文件中，可以使用 <code>build</code> 关键字指定构建镜像所需的信息，比如 Dockerfile 的路径。例如：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">myservice:</span><br>    <span class="hljs-attr">build:</span><br>      <span class="hljs-attr">context:</span> <span class="hljs-string">.</span><br>      <span class="hljs-attr">dockerfile:</span> <span class="hljs-string">Dockerfile</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>构建容器</strong>：在 docker-compose.yml 文件中，定义了服务后，可以使用 <code>docker-compose up</code> 命令来构建并启动容器。如果镜像不存在，Docker Compose 会自动根据 Dockerfile 构建镜像，然后启动容器。</p>
+</li>
+</ol>
+<h3 id="Dockerfile-在-Docker-Compose-中的作用："><a href="#Dockerfile-在-Docker-Compose-中的作用：" class="headerlink" title="Dockerfile 在 Docker Compose 中的作用："></a>Dockerfile 在 Docker Compose 中的作用：</h3><p>Dockerfile 是用来构建 Docker 镜像的脚本文件，定义了镜像的内容和构建方式。在 Docker Compose 中，Dockerfile 主要用于构建镜像，以及指定镜像的基础环境和依赖。</p>
+<p>当在 docker-compose.yml 文件中使用 <code>build</code> 关键字指定了 Dockerfile 的路径后，Docker Compose 将会根据这个 Dockerfile 来构建镜像。Dockerfile 中的指令将会按顺序执行，以构建出最终的镜像。Docker Compose 可以根据 Dockerfile 中的指令构建出多个镜像，每个服务都可以有自己的 Dockerfile。</p>
+<p>总之，Dockerfile 在 Docker Compose 中的作用是定义镜像的构建过程，包括基础镜像、依赖安装、文件拷贝等操作，以供 Docker Compose 使用。</p>
+<h3 id="二者关系"><a href="#二者关系" class="headerlink" title="二者关系"></a>二者关系</h3><p><code>docker-compose.yml</code> 和 <code>Dockerfile</code> 是 Docker 中的两个不同概念，它们通常用于不同的目的并且不会直接冲突。</p>
+<ul>
+<li><p><strong>Dockerfile</strong>: 用于构建 Docker 镜像的文件，其中包含了构建镜像所需的指令，比如基础镜像、安装软件、设置环境变量、拷贝文件等。通过执行 <code>docker build</code> 命令可以根据 Dockerfile 构建出一个镜像。</p>
+</li>
+<li><p><strong>docker-compose.yml</strong>: 用于定义和运行多个 Docker 容器的配置文件，可以一次性启动多个容器，并且定义了容器之间的关系、网络设置、卷挂载等。通过执行 <code>docker-compose up</code> 命令可以根据 <code>docker-compose.yml</code> 启动整个应用的容器组。</p>
+</li>
+</ul>
+<p>虽然它们有不同的作用，但在某些情况下，<code>docker-compose.yml</code> 文件中也可以包含一些与 <code>Dockerfile</code> 相关的指令，比如 <code>build</code> 指令用于构建镜像。下面是一个简单的示例：</p>
+<p>假设有一个应用，需要构建一个镜像并运行两个容器：一个是 Web 服务器，一个是数据库。</p>
+<p><strong>Dockerfile</strong> 可能如下所示：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-comment"># 基于官方的 Node 镜像</span><br><span class="hljs-keyword">FROM</span> node:<span class="hljs-number">14</span><br><br><span class="hljs-comment"># 设置工作目录</span><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span><br><br><span class="hljs-comment"># 拷贝应用代码到工作目录</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . .</span><br><br><span class="hljs-comment"># 安装依赖</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> npm install</span><br><br><span class="hljs-comment"># 暴露端口</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">3000</span><br><br><span class="hljs-comment"># 启动应用</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">&quot;npm&quot;</span>, <span class="hljs-string">&quot;start&quot;</span>]</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>docker-compose.yml</strong> 可能如下所示：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">web:</span><br>    <span class="hljs-attr">build:</span> <span class="hljs-string">.</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;3000:3000&quot;</span><br>    <span class="hljs-attr">depends_on:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">db</span><br>  <span class="hljs-attr">db:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:5.7</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">example</span><br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，<code>docker-compose.yml</code> 中的 <code>build: .</code> 指令告诉 <code>docker-compose</code> 使用当前目录下的 <code>Dockerfile</code> 构建 <code>web</code> 服务的镜像。这样可以通过 <code>docker-compose up</code> 一次性启动两个容器，而不需要手动执行 <code>docker build</code> 和 <code>docker run</code> 命令。</p>
+<p>因此，虽然 <code>docker-compose.yml</code> 中可以包含一些与 <code>Dockerfile</code> 相关的指令，但它们的作用和目的不同，不会直接冲突。</p>
+<h2 id="奇怪的命令和软件安装"><a href="#奇怪的命令和软件安装" class="headerlink" title="奇怪的命令和软件安装"></a>奇怪的命令和软件安装</h2><h3 id="apt-install-安装路径"><a href="#apt-install-安装路径" class="headerlink" title="apt install 安装路径"></a>apt install 安装路径</h3><p>在默认情况下，<code>apt install</code> 命令会将软件包安装到系统中预定义的目录结构中。在大多数情况下，Debian和Ubuntu系统中的软件包通常会被安装到以下目录中：</p>
+<ul>
+<li>可执行文件通常会被安装到 <code>/usr/bin/</code> 目录下。</li>
+<li>库文件通常会被安装到 <code>/usr/lib/</code> 目录下。</li>
+<li>配置文件通常会被安装到 <code>/etc/</code> 目录下。</li>
+<li>文档通常会被安装到 <code>/usr/share/doc/</code> 目录下。</li>
+<li>其他资源文件通常会被安装到 <code>/usr/share/</code> 目录下。</li>
+</ul>
+<p>需要注意的是，具体的安装路径可能会因软件包而异，有些软件包可能会有自定义的安装路径。如果你想要查看特定软件包的安装路径，可以使用<code>dpkg</code>命令来查询已安装软件包的文件列表，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dpkg -L package_name<br></code></pre></td></tr></table></figure>
+
+<p>这将列出特定软件包安装的文件路径。</p>
+<h3 id="自动联网更新时间"><a href="#自动联网更新时间" class="headerlink" title="自动联网更新时间"></a>自动联网更新时间</h3><blockquote>
+<p>以ntp为例，或者可以使用chrony</p>
+</blockquote>
+<h4 id="安装ntp"><a href="#安装ntp" class="headerlink" title="安装ntp"></a>安装ntp</h4><ol>
+<li><p><strong>检查并更新你的系统时间</strong>：<br>你可以使用 <code>date</code> 命令查看当前系统时间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">date</span><br></code></pre></td></tr></table></figure>
+<p>如果时间不正确，你可以使用 <code>sudo</code> 权限手动设置正确的时间，或者更好的是，使用 NTP（网络时间协议）自动同步时间。</p>
+</li>
+<li><p><strong>使用 NTP 自动同步时间</strong>：<br>安装 <code>ntp</code> 服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt install ntp<br></code></pre></td></tr></table></figure>
+<p>安装完成后，NTP 服务会启动并尝试自动同步你的系统时间。</p>
+</li>
+<li><p><strong>手动设置系统时间</strong>：<br>如果你不想使用 NTP，也可以手动设置系统时间。例如，设置为 2023年10月1日12:00可以使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">date</span> --<span class="hljs-built_in">set</span>=<span class="hljs-string">&quot;2023-10-01 12:00:00&quot;</span><br></code></pre></td></tr></table></figure>
+<p>确保使用你的本地时间。</p>
+</li>
+<li><p>**重新运行 <code>sudo apt update</code>**：<br>在调整时间之后，重新运行更新命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="启动ntp"><a href="#启动ntp" class="headerlink" title="启动ntp"></a>启动ntp</h4><ol>
+<li>确定初始化系统管理器</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps --no-headers -o <span class="hljs-built_in">comm</span> 1<br></code></pre></td></tr></table></figure>
+
+<p>如果返回的不是<code>systemd</code>，你需要用我的方法<code>init</code></p>
+<ol start="2">
+<li>确定启动名称</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> /etc/init.d/<br></code></pre></td></tr></table></figure>
+
+<p>查看最接近<code>nfds</code>的名称，这是我的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@姒克禹:/home/cofallen/Code/Cpp# <span class="hljs-built_in">ls</span> /etc/init.d/<br>apparmor          cups               kmod          procps                       ufw<br>apport            dbus               lightdm       pulseaudio-enable-autospawn  unattended-upgrades<br>bluetooth         hwclock.sh         ntpsec        rsync                        uuidd<br>console-setup.sh  irqbalance         plymouth      saned                        whoopsie<br>cron              keyboard-setup.sh  plymouth-log  screen-cleanup               x11-commo<br></code></pre></td></tr></table></figure>
+
+<p>一眼看出<code>ntpsec</code>是吧。</p>
+<ol start="3">
+<li>启动进程</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@姒克禹:/home/cofallen/Code/Cpp# <span class="hljs-built_in">sudo</span> service ntpsec start<br> * Starting NTP server ntpd                                                                                     2024-05-20T22:18:10 ntpd[20837]: INIT: ntpd ntpsec-1.2.2: Starting<br>2024-05-20T22:18:10 ntpd[20837]: INIT: Command line: /usr/sbin/ntpd -p /run/ntpd.pid -c /etc/ntpsec/ntp.conf -g -N -u ntpsec:ntpsec<br></code></pre></td></tr></table></figure>
+
+<h2 id="git-文件"><a href="#git-文件" class="headerlink" title="git 文件"></a>git 文件</h2><p><code>.git</code> 文件夹是 Git 仓库的核心，它包含了跟踪项目版本历史和管理文件更改所需的所有信息。以下是 <code>.git</code> 文件夹中一些重要文件和文件夹的解释：</p>
+<ol>
+<li><p><strong>branches</strong>:</p>
+<ul>
+<li>包含指向各个分支头部的指针文件。</li>
+</ul>
+</li>
+<li><p><strong>hooks</strong>:</p>
+<ul>
+<li>包含客户端或服务器上的钩子脚本，这些脚本在特定的重要动作发生时会被执行。</li>
+</ul>
+</li>
+<li><p><strong>info</strong>:</p>
+<ul>
+<li>包含全局性的排除文件（global exclude file）。</li>
+</ul>
+</li>
+<li><p><strong>objects</strong>:</p>
+<ul>
+<li>存储所有数据内容的地方。Git 使用一种称为“哈希”的机制来对内容进行索引，这些内容可以是文件内容或者目录结构。</li>
+</ul>
+</li>
+<li><p><strong>refs</strong>:</p>
+<ul>
+<li>存储指向数据（如提交对象）的提交对象（commit objects）的指针。这里也包含了远程仓库的引用。</li>
+</ul>
+</li>
+<li><p><strong>config</strong>:</p>
+<ul>
+<li>包含了本地仓库的配置信息，例如用户信息、远程仓库地址等。</li>
+</ul>
+</li>
+<li><p><strong>HEAD</strong>:</p>
+<ul>
+<li>指示当前所在分支的符号引用。</li>
+</ul>
+</li>
+<li><p><strong>index</strong>:</p>
+<ul>
+<li>包含了暂存区的内容，用于记录下一次提交的文件状态。</li>
+</ul>
+</li>
+<li><p><strong>logs</strong>:</p>
+<ul>
+<li>包含引用日志，可以用来查看每个引用的更新历史。</li>
+</ul>
+</li>
+</ol>
+<p>这些文件和文件夹组成了 Git 仓库的基本结构，负责跟踪文件变化、存储元数据和配置信息、以及维护分支和标签等重要功能。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/old/" class="print-no-link">#old</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>旧的笔记</div>
+      <div>http://example.com/2024/07/15/old/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>cofallen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年7月15日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年7月15日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/07/15/go-test/" title="Go 基础用法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Go 基础用法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/14/build-page-by-hexo/" title="C 空间内存分配">
+                        <span class="hidden-mobile">C 空间内存分配</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -16,15 +16,15 @@
   <meta name="author" content="cofallen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简要的关于 c 的应用。可以在 VOFA 中加入，简化代码调用体积。             c 分配空间使用结构体123456789101112131415161718192021222324#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;struct Data &#123;    float *floatArray;">
+    <meta name="description" content="请先掌握 c&#x2F;c++ 基本用法。             多线程整理std::this_thread 用法举例std::this_thread 是 C++ 标准库中的命名空间，提供了与当前线程相关的功能。以下是一些 std::this_thread 命名空间中常用的功能和用法：  std::this_thread::get_id()  用于获取当前线程的 ID。  123">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C 空间内存分配">
-<meta property="og:url" content="http://example.com/2024/07/14/build-page-by-hexo/index.html">
+<meta property="og:title" content="互斥锁的简单运用">
+<meta property="og:url" content="http://example.com/2024/07/15/old-mutex/index.html">
 <meta property="og:site_name" content="cofallen">
-<meta property="og:description" content="简要的关于 c 的应用。可以在 VOFA 中加入，简化代码调用体积。             c 分配空间使用结构体123456789101112131415161718192021222324#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;struct Data &#123;    float *floatArray;">
+<meta property="og:description" content="请先掌握 c&#x2F;c++ 基本用法。             多线程整理std::this_thread 用法举例std::this_thread 是 C++ 标准库中的命名空间，提供了与当前线程相关的功能。以下是一些 std::this_thread 命名空间中常用的功能和用法：  std::this_thread::get_id()  用于获取当前线程的 ID。  123">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-14T14:17:20.000Z">
-<meta property="article:modified_time" content="2024-07-15T10:35:33.814Z">
+<meta property="article:published_time" content="2024-07-15T10:26:55.000Z">
+<meta property="article:modified_time" content="2024-07-15T10:41:44.424Z">
 <meta property="article:author" content="cofallen">
 <meta property="article:tag" content="c&#x2F;c++">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
   
     <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
   
-  <title>C 空间内存分配 - cofallen</title>
+  <title>互斥锁的简单运用 - cofallen</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C 空间内存分配"></span>
+            <span id="subtitle" data-typed-text="互斥锁的简单运用"></span>
           
         </div>
 
@@ -239,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-14 22:17" pubdate>
-          2024年7月14日 晚上
+        <time datetime="2024-07-15 18:26" pubdate>
+          2024年7月15日 晚上
         </time>
       </span>
     
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          474 字
+          1.9k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          4 分钟
+          16 分钟
         
       </span>
     
@@ -307,12 +307,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C 空间内存分配</h1>
+            <h1 id="seo-header">互斥锁的简单运用</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-15T18:35:33+08:00
+                    本文最后更新于 2024-07-15T18:41:44+08:00
                   
                   
 
@@ -322,17 +322,90 @@
             
               <div class="markdown-body">
                 
-                <div class="note note-success">
-            <p>简要的关于 <code>c</code> 的应用。</p><p>可以在 VOFA 中加入，简化代码调用体积。</p>
+                <div class="note note-info">
+            <p>请先掌握 <code>c/c++</code> 基本用法。</p>
           </div>
 
-<h2 id="c-分配空间"><a href="#c-分配空间" class="headerlink" title="c 分配空间"></a>c 分配空间</h2><h3 id="使用结构体"><a href="#使用结构体" class="headerlink" title="使用结构体"></a>使用结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Data</span> &#123;</span><br>    <span class="hljs-type">float</span> *floatArray;<br>    <span class="hljs-type">char</span> *charArray;<br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-number">5</span>;  <span class="hljs-comment">// 假设有5个浮点数和4个字符</span><br><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Data</span> *<span class="hljs-title">data</span> =</span> (<span class="hljs-keyword">struct</span> Data *)<span class="hljs-built_in">calloc</span>(<span class="hljs-number">1</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> Data));<br>    data-&gt;floatArray = (<span class="hljs-type">float</span> *)<span class="hljs-built_in">calloc</span>(n, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>));<br>    data-&gt;charArray = (<span class="hljs-type">char</span> *)<span class="hljs-built_in">calloc</span>(<span class="hljs-number">4</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>));<br><br>    <span class="hljs-comment">// 现在你可以访问和操作data结构中的浮点数和字符数组了</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-built_in">free</span>(data-&gt;floatArray);<br>    <span class="hljs-built_in">free</span>(data-&gt;charArray);<br>    <span class="hljs-built_in">free</span>(data);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="多线程整理"><a href="#多线程整理" class="headerlink" title="多线程整理"></a>多线程整理</h2><h3 id="std-this-thread-用法举例"><a href="#std-this-thread-用法举例" class="headerlink" title="std::this_thread 用法举例"></a><code>std::this_thread</code> 用法举例</h3><p><code>std::this_thread</code> 是 C++ 标准库中的命名空间，提供了与当前线程相关的功能。以下是一些 <code>std::this_thread</code> 命名空间中常用的功能和用法：</p>
+<ol>
+<li><p><strong>std::this_thread::get_id()</strong></p>
+<ul>
+<li>用于获取当前线程的 ID。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Thread ID: &quot;</span> &lt;&lt; std::this_thread::<span class="hljs-built_in">get_id</span>() &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>std::this_thread::sleep_for()</strong></p>
+<ul>
+<li>用于使当前线程休眠一段时间。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;chrono&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Start sleeping...&quot;</span> &lt;&lt; std::endl;<br>    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">3</span>));<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Awake after 3 seconds.&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>std::this_thread::yield()</strong></p>
+<ul>
+<li>用于提示调度器允许其他线程运行，当前线程可能会暂时放弃 CPU 时间片。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Before yielding...&quot;</span> &lt;&lt; std::endl;<br>    std::this_thread::<span class="hljs-built_in">yield</span>();<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;After yielding...&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>这些是 <code>std::this_thread</code> 命名空间中的一些常用方法。你可以根据需要，在程序中使用这些函数来处理线程相关的操作。</p>
+<h3 id="std-chrono-用法举例"><a href="#std-chrono-用法举例" class="headerlink" title="std::chrono 用法举例"></a><code>std::chrono</code> 用法举例</h3><p>当您使用<code>std::chrono</code>库时，可以方便地处理时间点和持续时间。下面是一个简单的示例，展示了如何使用<code>std::chrono</code>来测量程序运行时间：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;chrono&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 获取程序开始时间点</span><br>    <span class="hljs-keyword">auto</span> start = std::chrono::high_resolution_clock::<span class="hljs-built_in">now</span>();<br><br>    <span class="hljs-comment">// 模拟程序运行</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000000</span>; ++i) &#123;<br>        <span class="hljs-comment">// do something</span><br>    &#125;<br><br>    <span class="hljs-comment">// 获取程序结束时间点</span><br>    <span class="hljs-keyword">auto</span> end = std::chrono::high_resolution_clock::<span class="hljs-built_in">now</span>();<br><br>    <span class="hljs-comment">// 计算程序运行时间</span><br>    std::chrono::duration&lt;<span class="hljs-type">double</span>&gt; duration = end - start;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;程序运行时间: &quot;</span> &lt;&lt; duration.<span class="hljs-built_in">count</span>() &lt;&lt; <span class="hljs-string">&quot; 秒&quot;</span> &lt;&lt; std::endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="拼接不同类型空间"><a href="#拼接不同类型空间" class="headerlink" title="拼接不同类型空间"></a>拼接不同类型空间</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> n1 = <span class="hljs-number">3</span>;<br>    <span class="hljs-type">int</span> n2 = <span class="hljs-number">4</span>;<br><br>    <span class="hljs-comment">// 分配第一个数组（整数数组）</span><br>    <span class="hljs-type">int</span> *intArray = (<span class="hljs-type">int</span> *)<span class="hljs-built_in">calloc</span>(n1, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n1; i++) &#123;<br>        intArray[i] = i + <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 分配第二个数组（浮点数数组）</span><br>    <span class="hljs-type">float</span> *floatArray = (<span class="hljs-type">float</span> *)<span class="hljs-built_in">calloc</span>(n2, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n2; i++) &#123;<br>        floatArray[i] = i + <span class="hljs-number">0.5</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 创建一个新的数组，将intArray和floatArray拼接起来</span><br>    <span class="hljs-type">int</span> totalSize = n1 + n2;<br>    <span class="hljs-type">void</span> *combinedArray = <span class="hljs-built_in">malloc</span>((n1 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>)) + (n2 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>)));<br><br>    <span class="hljs-comment">// 将intArray和floatArray的内容拷贝到combinedArray</span><br>    <span class="hljs-built_in">memcpy</span>(combinedArray, intArray, n1 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>    <span class="hljs-built_in">memcpy</span>((<span class="hljs-type">char</span> *)combinedArray + n1 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>), floatArray, n2 * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">float</span>));<br><br>    <span class="hljs-comment">// 现在combinedArray包含了intArray和floatArray的元素</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-built_in">free</span>(intArray);<br>    <span class="hljs-built_in">free</span>(floatArray);<br>    <span class="hljs-built_in">free</span>(combinedArray);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在上面的示例中，我们首先使用<code>std::chrono::high_resolution_clock::now()</code>获取程序开始时间点<code>start</code>，然后执行一些模拟的任务。接着，我们获取程序结束时间点<code>end</code>，并计算程序运行时间。最后，我们将程序运行时间输出到控制台。</p>
+<p><code>std::chrono::duration</code>是一个模板类，它表示时间段。在示例中，我们使用<code>std::chrono::duration&lt;double&gt;</code>来表示持续时间，并通过<code>count()</code>方法获取持续时间的秒数。</p>
+<p>通过使用<code>std::chrono</code>库，您可以方便地测量程序执行时间、处理时间间隔等时间相关操作。</p>
+<h3 id="std-condition-variable-用法举例"><a href="#std-condition-variable-用法举例" class="headerlink" title="std::condition_variable 用法举例"></a><code>std::condition_variable</code> 用法举例</h3><p><code>std::condition_variable</code> 是 C++ 标准库中用于多线程编程的类之一，它通常与 <code>std::mutex</code> 一起使用来实现线程间的同步和通信。以下是它的常见用法：</p>
+<ol>
+<li><p><strong>等待条件变量的通知：</strong> 线程可以通过调用 <code>wait()</code> 函数来等待条件变量的通知。在等待过程中，线程会释放与 <code>std::unique_lock&lt;std::mutex&gt;</code> 相关联的互斥锁，并暂时阻塞。当其他线程调用了 <code>notify_one()</code> 或 <code>notify_all()</code> 发送了通知时，等待的线程将被唤醒继续执行。</p>
+</li>
+<li><p><strong>在特定条件下等待：</strong> 通常情况下，<code>wait()</code> 函数会接受一个 lambda 函数作为参数，用于指定在收到通知前线程应该等待的特定条件。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::condition_variable cv;<br>std::mutex mtx;<br><span class="hljs-type">bool</span> someCondition = <span class="hljs-literal">false</span>;<br><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-function">std::unique_lock&lt;std::mutex&gt; <span class="hljs-title">lock</span><span class="hljs-params">(mtx)</span></span>;<br>cv.<span class="hljs-built_in">wait</span>(lock, []&#123; <span class="hljs-keyword">return</span> someCondition; &#125;);<br><br><span class="hljs-comment">// 等待结束后，继续执行操作</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>发送通知：</strong> 可以调用 <code>notify_one()</code> 或 <code>notify_all()</code> 函数来发送通知给等待的线程，唤醒一个或多个等待的线程。这通常是在持有相同互斥锁的情况下进行的，以确保线程间的正确同步。</p>
+</li>
+</ol>
+<p>总的来说，<code>std::condition_variable</code> 可以帮助协调多个线程之间的操作，确保在某个特定情况满足时线程能够安全地等待或唤醒。</p>
+<h3 id="析构互斥锁区别"><a href="#析构互斥锁区别" class="headerlink" title="析构互斥锁区别"></a>析构互斥锁区别</h3><ol>
+<li><p><code>std::lock_guard</code> 和 <code>std::unique_lock</code> 都是用于管理互斥锁的RAII（资源获取即初始化）类，但它们之间有一些重要的区别：</p>
+<ul>
+<li><code>std::lock_guard</code> 是一个轻量级的互斥锁封装，一旦被构造就会锁住互斥锁，并在其生命周期结束时自动释放互斥锁。<code>std::lock_guard</code> 适用于需要在同一作用域内锁住互斥锁的简单情况。</li>
+<li><code>std::unique_lock</code> 提供了更多的灵活性，它可以手动锁定和解锁互斥锁，并且可以延迟锁定。<code>std::unique_lock</code> 还支持条件变量的等待操作。因此，如果需要更多的控制权和灵活性，可以选择使用 <code>std::unique_lock</code>。</li>
+</ul>
+<p>在同一个作用域内，不建议混用 <code>std::lock_guard</code> 和 <code>std::unique_lock</code>，因为它们的行为可能会相互干扰，导致意外的行为发生。</p>
+</li>
+<li><p>在使用互斥锁时，<code>mtx</code> 是全局变量，可以在任何地方使用，包括在 <code>std::lock_guard</code> 或 <code>std::unique_lock</code> 中。这是因为 <code>mtx</code> 是一个全局变量，可以在整个程序中访问。</p>
+</li>
+<li><p><code>cv.notify_one()</code> 必须在互斥锁被锁定的情况下调用，以避免出现竞争条件。唤醒条件变量的操作通常需要与互斥锁一起使用，以确保线程安全。因此，一般情况下，<code>cv.notify_one()</code> 应该在已经锁定互斥锁的情况下调用。如果在没有锁定互斥锁的情况下调用 <code>cv.notify_one()</code>，可能会导致竞争条件和意外行为。</p>
+</li>
+</ol>
+<h3 id="同锁与不同锁区别"><a href="#同锁与不同锁区别" class="headerlink" title="同锁与不同锁区别"></a>同锁与不同锁区别</h3><p>使用相同的 <code>std::mutex</code> 和不同的 <code>std::mutex</code> 之间有一些重要区别，这些区别可以影响代码的正确性和性能。让我详细说明一下：</p>
+<h3 id="相同的-std-mutex-vs-不同的-std-mutex"><a href="#相同的-std-mutex-vs-不同的-std-mutex" class="headerlink" title="相同的 std::mutex vs. 不同的 std::mutex"></a>相同的 std::mutex vs. 不同的 std::mutex</h3><h4 id="相同的-std-mutex"><a href="#相同的-std-mutex" class="headerlink" title="相同的 std::mutex"></a>相同的 std::mutex</h4><ul>
+<li><strong>示例</strong>：在多个线程中共享相同的资源时，你可以使用相同的 <code>std::mutex</code> 来确保对这个资源的互斥访问。</li>
+<li><strong>优点</strong>：<ul>
+<li>简单：只需一个互斥量来管理对共享资源的访问。</li>
+<li>避免竞态条件：由于同一资源的互斥保护，避免了竞态条件。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>性能：如果一个线程正在使用互斥量锁定资源，其他线程就无法同时访问任何受该互斥量保护的资源，可能会导致性能瓶颈。</li>
+</ul>
+</li>
+</ul>
+<h4 id="不同的-std-mutex"><a href="#不同的-std-mutex" class="headerlink" title="不同的 std::mutex"></a>不同的 std::mutex</h4><ul>
+<li><strong>示例</strong>：当有多个独立的资源需要并行访问时，你可以为每个资源创建不同的 <code>std::mutex</code>。</li>
+<li><strong>优点</strong>：<ul>
+<li>并行性：不同的资源可以并行处理，因为它们有各自的互斥量。</li>
+<li>性能：避免了单一互斥量成为性能瓶颈的情况。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>复杂性：需要管理多个互斥量，可能需要更复杂的逻辑来确保正确的锁定顺序以避免死锁。</li>
+</ul>
+</li>
+</ul>
+<h3 id="不同的互斥量之间是否可以通过条件变量联系？"><a href="#不同的互斥量之间是否可以通过条件变量联系？" class="headerlink" title="不同的互斥量之间是否可以通过条件变量联系？"></a>不同的互斥量之间是否可以通过条件变量联系？</h3><p>是的，不同的互斥量之间可以通过条件变量联系。条件变量允许线程等待某个条件得到满足，并且在条件满足时通知其他线程。条件变量通常与互斥量一起使用，以便在线程等待条件变量时能够安全地释放互斥锁。</p>
+<p>例如，在多生产者-消费者问题中，可以为每个生产者和消费者线程分配一个独立的互斥量，并使用条件变量来实现线程间的通信。当生产者生产了数据时，它可以通知消费者线程来获取数据；反之，当消费者消费完数据时，它可以通知生产者线程来生产新的数据。</p>
+<p>总之，条件变量提供了一种方式，使得不同的互斥量之间的线程可以进行有效的协调和通信。</p>
 
-<h3 id="动态创建二维数组"><a href="#动态创建二维数组" class="headerlink" title="动态创建二维数组"></a>动态创建二维数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> rows = <span class="hljs-number">3</span>;<br>    <span class="hljs-type">int</span> cols = <span class="hljs-number">4</span>;<br><br>    <span class="hljs-comment">// 分配二维数组</span><br>    <span class="hljs-type">int</span> **array2D = (<span class="hljs-type">int</span> **)<span class="hljs-built_in">calloc</span>(rows, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span> *));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) &#123;<br>        array2D[i] = (<span class="hljs-type">int</span> *)<span class="hljs-built_in">calloc</span>(cols, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br>    &#125;<br><br>    <span class="hljs-comment">// 现在你可以使用array2D作为一个3x4的二维数组来存储和访问数据</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) &#123;<br>        <span class="hljs-built_in">free</span>(array2D[i]);<br>    &#125;<br>    <span class="hljs-built_in">free</span>(array2D);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="动态字符串"><a href="#动态字符串" class="headerlink" title="动态字符串"></a>动态字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">char</span> *str = (<span class="hljs-type">char</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">6</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>));  <span class="hljs-comment">// 分配初始内存空间</span><br>    <span class="hljs-built_in">strcpy</span>(str, <span class="hljs-string">&quot;Hello&quot;</span>);<br><br>    <span class="hljs-comment">// 扩展字符串</span><br>    str = (<span class="hljs-type">char</span> *)<span class="hljs-built_in">realloc</span>(str, <span class="hljs-number">11</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>));  <span class="hljs-comment">// 重新分配内存</span><br>    <span class="hljs-built_in">strcat</span>(str, <span class="hljs-string">&quot; World&quot;</span>);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str);  <span class="hljs-comment">// 输出 &quot;Hello World&quot;</span><br><br>    <span class="hljs-comment">// 释放内存</span><br>    <span class="hljs-built_in">free</span>(str);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -356,8 +429,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C 空间内存分配</div>
-      <div>http://example.com/2024/07/14/build-page-by-hexo/</div>
+      <div>互斥锁的简单运用</div>
+      <div>http://example.com/2024/07/15/old-mutex/</div>
     </div>
     <div class="license-meta">
       
@@ -369,7 +442,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月14日</div>
+          <div>2024年7月15日</div>
         </div>
       
       
@@ -406,15 +479,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/15/old/" title="旧的笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">旧的笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/07/15/old-shell/" title="shell 一些用法">
+                        <span class="hidden-mobile">shell 一些用法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

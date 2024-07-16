@@ -16,17 +16,17 @@
   <meta name="author" content="cofallen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="请先掌握 c&#x2F;c++ 基本用法。             多线程整理std::this_thread 用法举例std::this_thread 是 C++ 标准库中的命名空间，提供了与当前线程相关的功能。以下是一些 std::this_thread 命名空间中常用的功能和用法：  std::this_thread::get_id()  用于获取当前线程的 ID。  123">
+    <meta name="description" content="这是半年前的记录，其中有不少问题，懒得改了。简单看看吧。                  一些整理 这是我仓库崩了很多次的思考。。 为了造福人类，为了整理下我在搞东西遇到的问题，我写下这个东西，便于以后出现问题好搞。 这玩意我还得开个备份，仓库别没了。。   目录 1.rm-rf 你值得拥有   2.重置服务器后配置   3.关联本地文件  1. rm -f&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="互斥锁的简单运用">
-<meta property="og:url" content="http://example.com/2024/07/15/old-mutex/index.html">
+<meta property="og:title" content="阿里云服务器配置">
+<meta property="og:url" content="http://example.com/2024/07/16/old-config/index.html">
 <meta property="og:site_name" content="cofallen">
-<meta property="og:description" content="请先掌握 c&#x2F;c++ 基本用法。             多线程整理std::this_thread 用法举例std::this_thread 是 C++ 标准库中的命名空间，提供了与当前线程相关的功能。以下是一些 std::this_thread 命名空间中常用的功能和用法：  std::this_thread::get_id()  用于获取当前线程的 ID。  123">
+<meta property="og:description" content="这是半年前的记录，其中有不少问题，懒得改了。简单看看吧。                  一些整理 这是我仓库崩了很多次的思考。。 为了造福人类，为了整理下我在搞东西遇到的问题，我写下这个东西，便于以后出现问题好搞。 这玩意我还得开个备份，仓库别没了。。   目录 1.rm-rf 你值得拥有   2.重置服务器后配置   3.关联本地文件  1. rm -f&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-15T10:26:55.000Z">
-<meta property="article:modified_time" content="2024-07-16T03:56:23.120Z">
+<meta property="article:published_time" content="2024-07-16T03:44:22.000Z">
+<meta property="article:modified_time" content="2024-07-16T04:06:49.230Z">
 <meta property="article:author" content="cofallen">
-<meta property="article:tag" content="c&#x2F;c++">
+<meta property="article:tag" content="old">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -35,7 +35,7 @@
   
     <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
   
-  <title>互斥锁的简单运用 - cofallen</title>
+  <title>阿里云服务器配置 - cofallen</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="互斥锁的简单运用"></span>
+            <span id="subtitle" data-typed-text="阿里云服务器配置"></span>
           
         </div>
 
@@ -244,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-15 18:26" pubdate>
-          星期一, 七月 15日 2024, 6:26 晚上
+        <time datetime="2024-07-16 11:44" pubdate>
+          星期二, 七月 16日 2024, 11:44 中午
         </time>
       </span>
     
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          884 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          16 分钟
+          8 分钟
         
       </span>
     
@@ -312,12 +312,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">互斥锁的简单运用</h1>
+            <h1 id="seo-header">阿里云服务器配置</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-16T11:56:23+08:00
+                    本文最后更新于 2024-07-16T12:06:49+08:00
                   
                   
 
@@ -327,89 +327,91 @@
             
               <div class="markdown-body">
                 
-                <div class="note note-info">
-            <p>请先掌握 <code>c/c++</code> 基本用法。</p>
+                <div class="note note-danger">
+            <p>这是半年前的记录，其中有不少问题，懒得改了。</p><p>简单看看吧。</p>
           </div>
 
-<h2 id="多线程整理"><a href="#多线程整理" class="headerlink" title="多线程整理"></a>多线程整理</h2><h3 id="std-this-thread-用法举例"><a href="#std-this-thread-用法举例" class="headerlink" title="std::this_thread 用法举例"></a><code>std::this_thread</code> 用法举例</h3><p><code>std::this_thread</code> 是 C++ 标准库中的命名空间，提供了与当前线程相关的功能。以下是一些 <code>std::this_thread</code> 命名空间中常用的功能和用法：</p>
-<ol>
-<li><p><strong>std::this_thread::get_id()</strong></p>
-<ul>
-<li>用于获取当前线程的 ID。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Thread ID: &quot;</span> &lt;&lt; std::this_thread::<span class="hljs-built_in">get_id</span>() &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>std::this_thread::sleep_for()</strong></p>
-<ul>
-<li>用于使当前线程休眠一段时间。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;chrono&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Start sleeping...&quot;</span> &lt;&lt; std::endl;<br>    std::this_thread::<span class="hljs-built_in">sleep_for</span>(std::chrono::<span class="hljs-built_in">seconds</span>(<span class="hljs-number">3</span>));<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Awake after 3 seconds.&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>std::this_thread::yield()</strong></p>
-<ul>
-<li>用于提示调度器允许其他线程运行，当前线程可能会暂时放弃 CPU 时间片。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;thread&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Before yielding...&quot;</span> &lt;&lt; std::endl;<br>    std::this_thread::<span class="hljs-built_in">yield</span>();<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;After yielding...&quot;</span> &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-</ol>
-<p>这些是 <code>std::this_thread</code> 命名空间中的一些常用方法。你可以根据需要，在程序中使用这些函数来处理线程相关的操作。</p>
-<h3 id="std-chrono-用法举例"><a href="#std-chrono-用法举例" class="headerlink" title="std::chrono 用法举例"></a><code>std::chrono</code> 用法举例</h3><p>当您使用<code>std::chrono</code>库时，可以方便地处理时间点和持续时间。下面是一个简单的示例，展示了如何使用<code>std::chrono</code>来测量程序运行时间：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;chrono&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 获取程序开始时间点</span><br>    <span class="hljs-keyword">auto</span> start = std::chrono::high_resolution_clock::<span class="hljs-built_in">now</span>();<br><br>    <span class="hljs-comment">// 模拟程序运行</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000000</span>; ++i) &#123;<br>        <span class="hljs-comment">// do something</span><br>    &#125;<br><br>    <span class="hljs-comment">// 获取程序结束时间点</span><br>    <span class="hljs-keyword">auto</span> end = std::chrono::high_resolution_clock::<span class="hljs-built_in">now</span>();<br><br>    <span class="hljs-comment">// 计算程序运行时间</span><br>    std::chrono::duration&lt;<span class="hljs-type">double</span>&gt; duration = end - start;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;程序运行时间: &quot;</span> &lt;&lt; duration.<span class="hljs-built_in">count</span>() &lt;&lt; <span class="hljs-string">&quot; 秒&quot;</span> &lt;&lt; std::endl;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>在上面的示例中，我们首先使用<code>std::chrono::high_resolution_clock::now()</code>获取程序开始时间点<code>start</code>，然后执行一些模拟的任务。接着，我们获取程序结束时间点<code>end</code>，并计算程序运行时间。最后，我们将程序运行时间输出到控制台。</p>
-<p><code>std::chrono::duration</code>是一个模板类，它表示时间段。在示例中，我们使用<code>std::chrono::duration&lt;double&gt;</code>来表示持续时间，并通过<code>count()</code>方法获取持续时间的秒数。</p>
-<p>通过使用<code>std::chrono</code>库，您可以方便地测量程序执行时间、处理时间间隔等时间相关操作。</p>
-<h3 id="std-condition-variable-用法举例"><a href="#std-condition-variable-用法举例" class="headerlink" title="std::condition_variable 用法举例"></a><code>std::condition_variable</code> 用法举例</h3><p><code>std::condition_variable</code> 是 C++ 标准库中用于多线程编程的类之一，它通常与 <code>std::mutex</code> 一起使用来实现线程间的同步和通信。以下是它的常见用法：</p>
-<ol>
-<li><p><strong>等待条件变量的通知：</strong> 线程可以通过调用 <code>wait()</code> 函数来等待条件变量的通知。在等待过程中，线程会释放与 <code>std::unique_lock&lt;std::mutex&gt;</code> 相关联的互斥锁，并暂时阻塞。当其他线程调用了 <code>notify_one()</code> 或 <code>notify_all()</code> 发送了通知时，等待的线程将被唤醒继续执行。</p>
-</li>
-<li><p><strong>在特定条件下等待：</strong> 通常情况下，<code>wait()</code> 函数会接受一个 lambda 函数作为参数，用于指定在收到通知前线程应该等待的特定条件。例如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::condition_variable cv;<br>std::mutex mtx;<br><span class="hljs-type">bool</span> someCondition = <span class="hljs-literal">false</span>;<br><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-function">std::unique_lock&lt;std::mutex&gt; <span class="hljs-title">lock</span><span class="hljs-params">(mtx)</span></span>;<br>cv.<span class="hljs-built_in">wait</span>(lock, []&#123; <span class="hljs-keyword">return</span> someCondition; &#125;);<br><br><span class="hljs-comment">// 等待结束后，继续执行操作</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>发送通知：</strong> 可以调用 <code>notify_one()</code> 或 <code>notify_all()</code> 函数来发送通知给等待的线程，唤醒一个或多个等待的线程。这通常是在持有相同互斥锁的情况下进行的，以确保线程间的正确同步。</p>
-</li>
-</ol>
-<p>总的来说，<code>std::condition_variable</code> 可以帮助协调多个线程之间的操作，确保在某个特定情况满足时线程能够安全地等待或唤醒。</p>
-<h3 id="析构互斥锁区别"><a href="#析构互斥锁区别" class="headerlink" title="析构互斥锁区别"></a>析构互斥锁区别</h3><ol>
-<li><p><code>std::lock_guard</code> 和 <code>std::unique_lock</code> 都是用于管理互斥锁的RAII（资源获取即初始化）类，但它们之间有一些重要的区别：</p>
-<ul>
-<li><code>std::lock_guard</code> 是一个轻量级的互斥锁封装，一旦被构造就会锁住互斥锁，并在其生命周期结束时自动释放互斥锁。<code>std::lock_guard</code> 适用于需要在同一作用域内锁住互斥锁的简单情况。</li>
-<li><code>std::unique_lock</code> 提供了更多的灵活性，它可以手动锁定和解锁互斥锁，并且可以延迟锁定。<code>std::unique_lock</code> 还支持条件变量的等待操作。因此，如果需要更多的控制权和灵活性，可以选择使用 <code>std::unique_lock</code>。</li>
-</ul>
-<p>在同一个作用域内，不建议混用 <code>std::lock_guard</code> 和 <code>std::unique_lock</code>，因为它们的行为可能会相互干扰，导致意外的行为发生。</p>
-</li>
-<li><p>在使用互斥锁时，<code>mtx</code> 是全局变量，可以在任何地方使用，包括在 <code>std::lock_guard</code> 或 <code>std::unique_lock</code> 中。这是因为 <code>mtx</code> 是一个全局变量，可以在整个程序中访问。</p>
-</li>
-<li><p><code>cv.notify_one()</code> 必须在互斥锁被锁定的情况下调用，以避免出现竞争条件。唤醒条件变量的操作通常需要与互斥锁一起使用，以确保线程安全。因此，一般情况下，<code>cv.notify_one()</code> 应该在已经锁定互斥锁的情况下调用。如果在没有锁定互斥锁的情况下调用 <code>cv.notify_one()</code>，可能会导致竞争条件和意外行为。</p>
-</li>
-</ol>
-<h3 id="同锁与不同锁区别"><a href="#同锁与不同锁区别" class="headerlink" title="同锁与不同锁区别"></a>同锁与不同锁区别</h3><p>使用相同的 <code>std::mutex</code> 和不同的 <code>std::mutex</code> 之间有一些重要区别，这些区别可以影响代码的正确性和性能。让我详细说明一下：</p>
-<h3 id="相同的-std-mutex-vs-不同的-std-mutex"><a href="#相同的-std-mutex-vs-不同的-std-mutex" class="headerlink" title="相同的 std::mutex vs. 不同的 std::mutex"></a>相同的 std::mutex vs. 不同的 std::mutex</h3><h4 id="相同的-std-mutex"><a href="#相同的-std-mutex" class="headerlink" title="相同的 std::mutex"></a>相同的 std::mutex</h4><ul>
-<li><strong>示例</strong>：在多个线程中共享相同的资源时，你可以使用相同的 <code>std::mutex</code> 来确保对这个资源的互斥访问。</li>
-<li><strong>优点</strong>：<ul>
-<li>简单：只需一个互斥量来管理对共享资源的访问。</li>
-<li>避免竞态条件：由于同一资源的互斥保护，避免了竞态条件。</li>
-</ul>
-</li>
-<li><strong>缺点</strong>：<ul>
-<li>性能：如果一个线程正在使用互斥量锁定资源，其他线程就无法同时访问任何受该互斥量保护的资源，可能会导致性能瓶颈。</li>
-</ul>
-</li>
-</ul>
-<h4 id="不同的-std-mutex"><a href="#不同的-std-mutex" class="headerlink" title="不同的 std::mutex"></a>不同的 std::mutex</h4><ul>
-<li><strong>示例</strong>：当有多个独立的资源需要并行访问时，你可以为每个资源创建不同的 <code>std::mutex</code>。</li>
-<li><strong>优点</strong>：<ul>
-<li>并行性：不同的资源可以并行处理，因为它们有各自的互斥量。</li>
-<li>性能：避免了单一互斥量成为性能瓶颈的情况。</li>
-</ul>
-</li>
-<li><strong>缺点</strong>：<ul>
-<li>复杂性：需要管理多个互斥量，可能需要更复杂的逻辑来确保正确的锁定顺序以避免死锁。</li>
-</ul>
-</li>
-</ul>
-<h3 id="不同的互斥量之间是否可以通过条件变量联系？"><a href="#不同的互斥量之间是否可以通过条件变量联系？" class="headerlink" title="不同的互斥量之间是否可以通过条件变量联系？"></a>不同的互斥量之间是否可以通过条件变量联系？</h3><p>是的，不同的互斥量之间可以通过条件变量联系。条件变量允许线程等待某个条件得到满足，并且在条件满足时通知其他线程。条件变量通常与互斥量一起使用，以便在线程等待条件变量时能够安全地释放互斥锁。</p>
-<p>例如，在多生产者-消费者问题中，可以为每个生产者和消费者线程分配一个独立的互斥量，并使用条件变量来实现线程间的通信。当生产者生产了数据时，它可以通知消费者线程来获取数据；反之，当消费者消费完数据时，它可以通知生产者线程来生产新的数据。</p>
-<p>总之，条件变量提供了一种方式，使得不同的互斥量之间的线程可以进行有效的协调和通信。</p>
+
+
+
+
+<h1 id="一些整理"><a href="#一些整理" class="headerlink" title="一些整理"></a>一些整理</h1><blockquote>
+<p>这是我仓库崩了很多次的思考。。</p>
+<p>为了<del>造福人类</del>，为了整理下我在搞东西遇到的问题，我写下这个东西，便于以后出现问题好搞。</p>
+<p>这玩意我还得开个备份，仓库别没了。。</p>
+</blockquote>
+<blockquote>
+<p>目录</p>
+<p><a href="#1-rm--f-%E7%9A%84%E4%BD%9C%E7%94%A8">1.rm-rf 你值得拥有</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#2-%E9%87%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E9%85%8D%E7%BD%AE">2.重置服务器后配置</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#3-%E5%85%B3%E8%81%94%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">3.关联本地文件</a></p>
+</blockquote>
+<h2 id="1-rm-f-的作用"><a href="#1-rm-f-的作用" class="headerlink" title="1. rm -f&#x2F;* 的作用"></a>1. rm -f&#x2F;* 的作用</h2><p>千万不要在任何文件夹下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -f/*<br></code></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf/*<br></code></pre></td></tr></table></figure>
+
+<p>起初我还以为这玩意只在当前文件夹下起作用，直到第三次把系统文件删了我才知道这玩意是直接删除根目录下所有文件，不询问。。</p>
+<p>要是你好奇的话，可以像我一样试试。</p>
+<p>我现在也有点奇怪那个东西，在<code>makefile</code>中编辑时有这一行代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">clean:<br>    <span class="hljs-built_in">rm</span> -f bin/*<br>    <span class="hljs-built_in">rm</span> -f build/*<br></code></pre></td></tr></table></figure>
+
+<p>这不是只<code>clean</code>了目标文件吗，也没把系统文件删了。</p>
+<p>谁知道，告诉我一声。</p>
+<h2 id="2-重置服务器重配置"><a href="#2-重置服务器重配置" class="headerlink" title="2. 重置服务器重配置"></a>2. 重置服务器重配置</h2><p><del>哈哈哈哈，你来了</del></p>
+<h3 id="2-1-阿里云服务器重置"><a href="#2-1-阿里云服务器重置" class="headerlink" title="2.1 阿里云服务器重置"></a>2.1 阿里云服务器重置</h3><p><em>当遇到你的系统文件删了，服务器连不上什么的问题，就来重置服务器吧<br>在此之前，先看看能不能登录</em></p>
+<p><strong>2.2.1 阿里云是否能登录</strong></p>
+<p>打开<a target="_blank" rel="noopener" href="https://cn.aliyun.com/">阿里云服务器官网</a>，找到你的系统镜像<code>Debian</code>,找到 : <em>远程连接</em>，选择第一个<code>Workbentch登录</code>，登不上就对了。</p>
+<p>选择<code>救援登录</code>，应该能登上，但是全黑屏。</p>
+<p>来参加光荣的重置吧！</p>
+<p><strong>2.2.2 重置阿里云服务器</strong></p>
+<p>点开<code>更多操作</code> -&gt; <code>重置系统</code>，可能要验证码什么的。</p>
+<p>重置后按照2.2.1的步骤看一下是否能默认登录(不搞也没事，肯定可以)</p>
+<p><strong>注意：重置服务器后你的文件会消失，请在此之前上传到仓库或者搞好备份</strong></p>
+<p><strong>2.2.3 更改密码和名字</strong></p>
+<p>找到<code>重置密码</code>按钮，可能还需要验证码。</p>
+<p>在<code>cmd</code>中输入<code>ssh root@&lt;your_address&gt;</code>，提示输入密码（看不到），输入回车键确认，看到你的名字是乱码。</p>
+<p>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hostname<br></code></pre></td></tr></table></figure>
+
+<p>查看你的用户名.</p>
+<p>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hostnamectl set-hostname &lt;yourname&gt;<br></code></pre></td></tr></table></figure>
+
+<p>修改你的用户名.</p>
+<p><em>修改后你要重新启动服务器</em></p>
+<p><strong>2.2.4 设置免密登录</strong></p>
+<p>找到C盘文件下的<code>.ssh</code>文件夹，清空。这是我的路径。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">C</span>:\Users\<span class="hljs-number">17273</span>\.ssh<br></code></pre></td></tr></table></figure>
+
+<p>打开<code>cmd</code>，输入ssh-keygen,一路回车，生成新的密钥。</p>
+<p>找到<code>.pub</code>结尾的文件，用记事本打开，<code>ctrl+a</code>全选复制。</p>
+<p>打开vscode,连接到你的远程<code>ssh</code>,要输入密码。</p>
+<p>使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -al<br></code></pre></td></tr></table></figure>
+
+<p>查看你的系统文件。（我就是把这个删了）</p>
+<p>能看到有<code>.ssh</code>文件，删了，再建一个。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf .ssh<br><span class="hljs-built_in">mkdir</span> .ssh<br><span class="hljs-built_in">cd</span> .ssh<br></code></pre></td></tr></table></figure>
+
+<p>在<code>.ssh</code>下将密钥保存到<code>authorized_keys</code>中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi authorized_keys<br></code></pre></td></tr></table></figure>
+
+<p>然后在键盘输入<code>i</code>,进入插入模式，<code>ctrl+v</code>粘贴，在键盘上先后输入<code>Esc+:wq</code>保存并退出。</p>
+<p>免密登录设置完成。</p>
+<h2 id="3-关联本地文件到远程仓库"><a href="#3-关联本地文件到远程仓库" class="headerlink" title="3. 关联本地文件到远程仓库"></a>3. 关联本地文件到远程仓库</h2><p>找到你的<code>gitea</code>用户界面，设置-&gt;SSH&#x2F;GPG密钥，删除原来的密钥。</p>
+<p>在服务器上的<code>.ssh</code>文件夹下输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen<br></code></pre></td></tr></table></figure>
+
+<p>生成新的密钥，注意，是vscode服务器上，不是C盘那里。</p>
+<p>刷新当前文件夹，找到<code>.pub</code>文件，全选复制，粘贴到<code>gitea</code>设置密钥那里，密钥名称可以不填，没用。</p>
+<p>至此，配置完成。</p>
 
                 
               </div>
@@ -443,7 +445,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/c-c/" class="print-no-link">#c/c++</a>
+        <a href="/tags/old/" class="print-no-link">#old</a>
       
     </div>
   
@@ -455,8 +457,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>互斥锁的简单运用</div>
-      <div>http://example.com/2024/07/15/old-mutex/</div>
+      <div>阿里云服务器配置</div>
+      <div>http://example.com/2024/07/16/old-config/</div>
     </div>
     <div class="license-meta">
       
@@ -468,7 +470,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月15日</div>
+          <div>2024年7月16日</div>
         </div>
       
       
@@ -505,18 +507,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/16/old-config/" title="阿里云服务器配置">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">阿里云服务器配置</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/15/old-shell/" title="shell 一些用法">
-                        <span class="hidden-mobile">shell 一些用法</span>
+                      <a href="/2024/07/15/old-mutex/" title="互斥锁的简单运用">
+                        <span class="hidden-mobile">互斥锁的简单运用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -24,6 +24,7 @@
       }
       document.getElementById("timeDate").innerHTML = "🚀已持续航行&nbsp"+dnum+"&nbsp天";  
       document.getElementById("times").innerHTML = hnum + "&nbsp时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      document.getElementById("customMessage").innerHTML = "<br>我很喜欢你，但你是自由的";
     }
   
     update();

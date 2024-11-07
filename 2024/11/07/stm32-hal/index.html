@@ -16,16 +16,17 @@
   <meta name="author" content="cofallen">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云服务器配置">
-<meta property="og:url" content="https://cofallen.github.io/2024/07/16/old-config/index.html">
+    <meta name="description" content="本文包含了常见的STM32 HAL库中基本操作函数的整理，方便查阅。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32 HAL库常见函数汇总">
+<meta property="og:url" content="https://cofallen.github.io/2024/11/07/stm32-hal/index.html">
 <meta property="og:site_name" content="sky 的知识小窝">
+<meta property="og:description" content="本文包含了常见的STM32 HAL库中基本操作函数的整理，方便查阅。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-16T03:44:22.000Z">
-<meta property="article:modified_time" content="2024-07-16T08:11:46.870Z">
+<meta property="article:published_time" content="2024-11-07T13:22:12.000Z">
+<meta property="article:modified_time" content="2024-11-07T14:40:24.458Z">
 <meta property="article:author" content="cofallen">
-<meta property="article:tag" content="old">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="stm32">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -34,7 +35,7 @@
   
     <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
   
-  <title>阿里云服务器配置 - sky 的知识小窝</title>
+  <title>STM32 HAL库常见函数汇总 - sky 的知识小窝</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="阿里云服务器配置"></span>
+            <span id="subtitle" data-typed-text="STM32 HAL库常见函数汇总"></span>
           
         </div>
 
@@ -243,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-16 12:44" pubdate>
-          2024年7月16日 下午
+        <time datetime="2024-11-07 22:22" pubdate>
+          2024年11月7日 晚上
         </time>
       </span>
     
@@ -255,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          929 字
+          759 字
         
       </span>
     
@@ -266,7 +267,7 @@
         
         
         
-          8 分钟
+          7 分钟
         
       </span>
     
@@ -311,12 +312,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">阿里云服务器配置</h1>
+            <h1 id="seo-header">STM32 HAL库常见函数汇总</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-16T17:11:46+09:00
+                    本文最后更新于 2024-11-07T23:40:24+09:00
                   
                   
 
@@ -326,87 +327,130 @@
             
               <div class="markdown-body">
                 
-                <div class="note note-danger">
-            <p>这是半年前的记录，其中有不少问题，懒得改了。</p><p>主要内容是申请阿里云服务器，然后部署到本地免密登录，使用 vscode 的 remote 插件远程连接，并在云服务器上配置了 ssh 连接到 gitea 仓库。</p>
+                <div class="note note-info">
+            <p>前提要求： 具备基本电路知识基础。</p>
           </div>
 
+<div class="note note-success">
+            <p>本文包含了常见的STM32 HAL库中基本操作函数的整理。</p><p>为方便查阅，在每个模块前包含表格，包括全部该模块的封装函数内容，可点击跳转详细查看其用法。</p>
+          </div>
 
-<h1 id="一些整理"><a href="#一些整理" class="headerlink" title="一些整理"></a>一些整理</h1><blockquote>
-<p>这是我仓库崩了很多次的思考。。</p>
-<p>为了<del>造福人类</del>，为了整理下我在搞东西遇到的问题，我写下这个东西，便于以后出现问题好搞。</p>
-<p>这玩意我还得开个备份，仓库别没了。。</p>
-</blockquote>
+<h2 id="HAL-GPIO-Generic-Driver"><a href="#HAL-GPIO-Generic-Driver" class="headerlink" title="HAL GPIO Generic Driver"></a>HAL GPIO Generic Driver</h2><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#HAL-GPIO-Init">HAL_GPIO_Init</a></td>
+<td>初始化</td>
+</tr>
+<tr>
+<td><a href="#HAL-GPIO_Deinit">HAL_GPIO_DeInit</a></td>
+<td>反初始化</td>
+</tr>
+<tr>
+<td><a href="#HAL-GPIO_Readpin">HAL_GPIO_ReadPin</a></td>
+<td>读取引脚状态</td>
+</tr>
+<tr>
+<td><a href="#HAL-GPIO_Writepin">HAL_GPIO_WritePin</a></td>
+<td>输出引脚</td>
+</tr>
+<tr>
+<td><a href="#HAL-GPIO_Togglepin">HAL_GPIO_TogglePin</a></td>
+<td>反转引脚</td>
+</tr>
+<tr>
+<td><a href="#HAL-GPIO_Lockpin">HAL_GPIO_LockPin</a></td>
+<td>锁引脚</td>
+</tr>
+<tr>
+<td><a href="#HAL-GPIO_EXTI_Irqhandler">HAL_GPIO_EXIT_IRQHandler</a></td>
+<td>外部中断请求</td>
+</tr>
+<tr>
+<td><a href="#HAL-GPIO_EXTI_Callback">HAL_GPIO_EXIT_Callback</a></td>
+<td>外部中断回调</td>
+</tr>
+</tbody></table>
+<h3 id="HAL-GPIO-Init"><a href="#HAL-GPIO-Init" class="headerlink" title="HAL_GPIO_Init"></a>HAL_GPIO_Init</h3><h4 id="函数名称"><a href="#函数名称" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_Init</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx, GPIO_InitTypeDef * GPIO_Init)</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="函数描述"><a href="#函数描述" class="headerlink" title="函数描述"></a>函数描述</h4><p>根据 GPIO_Init 中指定的参数初始化 GPIOx 外设。</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIOx: x 可以是 (A..I)选择</li>
+<li>GPIO_Init：指向包含指定 GPIO 外设配置信息的 GPIO_InitTypeDef 结构的指针。</li>
+<li>返回值：无。</li>
+</ul>
+<h3 id="HAL-GPIO-DeInit"><a href="#HAL-GPIO-DeInit" class="headerlink" title="HAL_GPIO_DeInit"></a>HAL_GPIO_DeInit</h3><h4 id="函数名称-1"><a href="#函数名称-1" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_DeInit</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx, <span class="hljs-type">uint32_t</span> GPIO_Pin)</span><br></code></pre></td></tr></table></figure>
+<h4 id="函数描述-1"><a href="#函数描述-1" class="headerlink" title="函数描述"></a>函数描述</h4><p>将 GPIOx 外设寄存器取消初始化为其默认复位值。</p>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIOx：其中 x 可以是 (A..I) 选择 GPIO 外设。</li>
+<li>GPIO_Pin：指定要写入的端口位。此参数可以是其中 x 可以是 (0..15) 的GPIO_PIN_x之一。</li>
+<li>返回值： 无。</li>
+</ul>
+<h3 id="HAL-GPIO-ReadPin"><a href="#HAL-GPIO-ReadPin" class="headerlink" title="HAL_GPIO_ReadPin"></a>HAL_GPIO_ReadPin</h3><h4 id="函数名称-2"><a href="#函数名称-2" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">GPIO_PinState <span class="hljs-title function_">HAL_GPIO_ReadPin</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx, <span class="hljs-type">uint16_t</span> GPIO_Pin)</span><br></code></pre></td></tr></table></figure>
+<h4 id="函数说明-读取指定的输入端口引脚。"><a href="#函数说明-读取指定的输入端口引脚。" class="headerlink" title="函数说明 读取指定的输入端口引脚。"></a>函数说明 读取指定的输入端口引脚。</h4><h4 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIOx：其中 x 可以是 (A..I) 选择 GPIO 外设。</li>
+<li>GPIO_Pin：指定要读取的端口位。此参数可以GPIO_PIN_x，其中 x 可以是 (0..15)。</li>
+<li>返回值：输入端口引脚值。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 读取 PB11 状态，若为低电平，执行语句。</span><br><span class="hljs-keyword">if</span> (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_11) == GPIO_PIN_RESET)<br>&#123;<br>  <span class="hljs-comment">// 语句块</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="HAL-GPIO-WritePin"><a href="#HAL-GPIO-WritePin" class="headerlink" title="HAL_GPIO_WritePin"></a>HAL_GPIO_WritePin</h3><h4 id="函数名称-3"><a href="#函数名称-3" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_WritePin</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx， <span class="hljs-type">uint16_t</span> GPIO_Pin， GPIO_PinState PinState)</span><br></code></pre></td></tr></table></figure>
+<h4 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h4><p>设置或清除选定的数据端口位。</p>
+<h4 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIOx：其中 x 可以是 (A..I) 为所有 STM32F2XX 设备选择 GPIO 外设 </li>
+<li>GPIO_Pin：指定要写入的端口位。此参数可以是其中 x 可以是 (0..15) 的GPIO_PIN_x之一。</li>
+<li>PinState：指定要写入所选位的值。此参数可以是GPIO_PinState枚举值之一：<ul>
+<li>GPIO_PIN_RESET：清除端口引脚 </li>
+<li>GPIO_PIN_SET：设置端口引脚</li>
+</ul>
+</li>
+<li>返回值：无。</li>
+</ul>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 给 PB12 高电平</span><br>HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);<br></code></pre></td></tr></table></figure>
+
 <blockquote>
-<p>目录</p>
-<p><a href="#1-rm--f-%E7%9A%84%E4%BD%9C%E7%94%A8">1.rm-rf 你值得拥有</a></p>
+<p>注释<br>此功能使用<code>GPIOx_BSRR</code>寄存器来允许原子读取&#x2F;修改访问。这样，在 read 和 modify 访问之间就不存在 IRQ 的风险。</p>
 </blockquote>
+<h3 id="HAL-GPIO-TogglePin"><a href="#HAL-GPIO-TogglePin" class="headerlink" title="HAL_GPIO_TogglePin"></a>HAL_GPIO_TogglePin</h3><h4 id="函数名称-4"><a href="#函数名称-4" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_TogglePin</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx, <span class="hljs-type">uint16_t</span> GPIO_Pin)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h4><p>切换指定的 GPIO 引脚。</p>
+<h4 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIOx：其中 x 可以是 (A..I) 选择 GPIO 外设。</li>
+<li>GPIO_Pin：指定要切换的引脚。</li>
+<li>返回值：无。</li>
+</ul>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 反转 PB12 电平</span><br>HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_12);<br></code></pre></td></tr></table></figure>
+
+<h3 id="HAL-GPIO-LockPin"><a href="#HAL-GPIO-LockPin" class="headerlink" title="HAL_GPIO_LockPin"></a>HAL_GPIO_LockPin</h3><h4 id="函数名称-5"><a href="#函数名称-5" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_GPIO_LockPin</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx, <span class="hljs-type">uint16_t</span> GPIO_Pin)</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>函数描述 锁定 GPIO 引脚配置寄存器。</li>
+</ul>
+<h4 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIOx：其中 x 可以是 (A..I) 为STM32F2XX系列选择 GPIO 外设 </li>
+<li>GPIO_Pin：指定要锁定的端口位。此参数可以是 GPIO_PIN_x 的任意组合，其中 x 可以是 (0..15)。</li>
+<li>返回值：无。</li>
+</ul>
 <blockquote>
-<p><a href="#2-%E9%87%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%87%8D%E9%85%8D%E7%BD%AE">2.重置服务器后配置</a></p>
+<p>注释 </p>
+<ul>
+<li>锁定的寄存器是 GPIOx_MODER、GPIOx_OTYPER、GPIOx_OSPEEDR、GPIOx_PUPDR、GPIOx_AFRL 和 GPIOx_AFRH。</li>
+<li>在下次重置之前，不能再修改锁定的 GPIO 引脚的配置。</li>
+</ul>
 </blockquote>
-<blockquote>
-<p><a href="#3-%E5%85%B3%E8%81%94%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">3.关联本地文件</a></p>
-</blockquote>
-<h2 id="1-rm-f-的作用"><a href="#1-rm-f-的作用" class="headerlink" title="1. rm -f&#x2F;* 的作用"></a>1. rm -f&#x2F;* 的作用</h2><p>千万不要在任何文件夹下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -f/*<br></code></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf/*<br></code></pre></td></tr></table></figure>
-
-<p>起初我还以为这玩意只在当前文件夹下起作用，直到第三次把系统文件删了我才知道这玩意是直接删除根目录下所有文件，不询问。。</p>
-<p>要是你好奇的话，可以像我一样试试。</p>
-<p>我现在也有点奇怪那个东西，在<code>makefile</code>中编辑时有这一行代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">clean:<br>    <span class="hljs-built_in">rm</span> -f bin/*<br>    <span class="hljs-built_in">rm</span> -f build/*<br></code></pre></td></tr></table></figure>
-
-<p>这不是只<code>clean</code>了目标文件吗，也没把系统文件删了。</p>
-<p>谁知道，告诉我一声。</p>
-<h2 id="2-重置服务器重配置"><a href="#2-重置服务器重配置" class="headerlink" title="2. 重置服务器重配置"></a>2. 重置服务器重配置</h2><p><del>哈哈哈哈，你来了</del></p>
-<h3 id="2-1-阿里云服务器重置"><a href="#2-1-阿里云服务器重置" class="headerlink" title="2.1 阿里云服务器重置"></a>2.1 阿里云服务器重置</h3><p><em>当遇到你的系统文件删了，服务器连不上什么的问题，就来重置服务器吧<br>在此之前，先看看能不能登录</em></p>
-<p><strong>2.2.1 阿里云是否能登录</strong></p>
-<p>打开<a target="_blank" rel="noopener" href="https://cn.aliyun.com/">阿里云服务器官网</a>，找到你的系统镜像<code>Debian</code>,找到 : <em>远程连接</em>，选择第一个<code>Workbentch登录</code>，登不上就对了。</p>
-<p>选择<code>救援登录</code>，应该能登上，但是全黑屏。</p>
-<p>来参加光荣的重置吧！</p>
-<p><strong>2.2.2 重置阿里云服务器</strong></p>
-<p>点开<code>更多操作</code> -&gt; <code>重置系统</code>，可能要验证码什么的。</p>
-<p>重置后按照2.2.1的步骤看一下是否能默认登录(不搞也没事，肯定可以)</p>
-<p><strong>注意：重置服务器后你的文件会消失，请在此之前上传到仓库或者搞好备份</strong></p>
-<p><strong>2.2.3 更改密码和名字</strong></p>
-<p>找到<code>重置密码</code>按钮，可能还需要验证码。</p>
-<p>在<code>cmd</code>中输入<code>ssh root@&lt;your_address&gt;</code>，提示输入密码（看不到），输入回车键确认，看到你的名字是乱码。</p>
-<p>输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hostname<br></code></pre></td></tr></table></figure>
-
-<p>查看你的用户名.</p>
-<p>输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hostnamectl set-hostname &lt;yourname&gt;<br></code></pre></td></tr></table></figure>
-
-<p>修改你的用户名.</p>
-<p><em>修改后你要重新启动服务器</em></p>
-<p><strong>2.2.4 设置免密登录</strong></p>
-<p>找到C盘文件下的<code>.ssh</code>文件夹，清空。这是我的路径。</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">C</span>:\Users\<span class="hljs-number">17273</span>\.ssh<br></code></pre></td></tr></table></figure>
-
-<p>打开<code>cmd</code>，输入ssh-keygen,一路回车，生成新的密钥。</p>
-<p>找到<code>.pub</code>结尾的文件，用记事本打开，<code>ctrl+a</code>全选复制。</p>
-<p>打开vscode,连接到你的远程<code>ssh</code>,要输入密码。</p>
-<p>使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -al<br></code></pre></td></tr></table></figure>
-
-<p>查看你的系统文件。（我就是把这个删了）</p>
-<p>能看到有<code>.ssh</code>文件，删了，再建一个。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf .ssh<br><span class="hljs-built_in">mkdir</span> .ssh<br><span class="hljs-built_in">cd</span> .ssh<br></code></pre></td></tr></table></figure>
-
-<p>在<code>.ssh</code>下将密钥保存到<code>authorized_keys</code>中。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi authorized_keys<br></code></pre></td></tr></table></figure>
-
-<p>然后在键盘输入<code>i</code>,进入插入模式，<code>ctrl+v</code>粘贴，在键盘上先后输入<code>Esc+:wq</code>保存并退出。</p>
-<p>免密登录设置完成。</p>
-<h2 id="3-关联本地文件到远程仓库"><a href="#3-关联本地文件到远程仓库" class="headerlink" title="3. 关联本地文件到远程仓库"></a>3. 关联本地文件到远程仓库</h2><p>找到你的<code>gitea</code>用户界面，设置-&gt;SSH&#x2F;GPG密钥，删除原来的密钥。</p>
-<p>在服务器上的<code>.ssh</code>文件夹下输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen<br></code></pre></td></tr></table></figure>
-
-<p>生成新的密钥，注意，是vscode服务器上，不是C盘那里。</p>
-<p>刷新当前文件夹，找到<code>.pub</code>文件，全选复制，粘贴到<code>gitea</code>设置密钥那里，密钥名称可以不填，没用。</p>
-<p>至此，配置完成。</p>
+<h3 id="HAL-GPIO-EXTI-IRQHandler"><a href="#HAL-GPIO-EXTI-IRQHandler" class="headerlink" title="HAL_GPIO_EXTI_IRQHandler"></a>HAL_GPIO_EXTI_IRQHandler</h3><h4 id="函数名称-6"><a href="#函数名称-6" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_EXTI_IRQHandler</span> <span class="hljs-params">(<span class="hljs-type">uint16_t</span> GPIO_Pin)</span><br></code></pre></td></tr></table></figure>
+<h4 id="函数说明-该函数处理-EXTI-中断请求。"><a href="#函数说明-该函数处理-EXTI-中断请求。" class="headerlink" title="函数说明 该函数处理 EXTI 中断请求。"></a>函数说明 该函数处理 EXTI 中断请求。</h4><h4 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIO_Pin：指定引脚连接的 EXTI 线</li>
+<li>返回值：无。</li>
+</ul>
+<h3 id="HAL-GPIO-EXTI-Callback"><a href="#HAL-GPIO-EXTI-Callback" class="headerlink" title="HAL_GPIO_EXTI_Callback"></a>HAL_GPIO_EXTI_Callback</h3><h4 id="函数名称-7"><a href="#函数名称-7" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_EXTI_Callback</span> <span class="hljs-params">(<span class="hljs-type">uint16_t</span> GPIO_Pin)</span><br></code></pre></td></tr></table></figure>
+<p>函数描述 EXTI 线检测回调。</p>
+<h4 id="参数-7"><a href="#参数-7" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>GPIO_Pin：指定引脚连接的 EXTI 行 </li>
+<li>返回值：无。</li>
+</ul>
 
                 
               </div>
@@ -425,7 +469,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%90%AC%E8%BF%90%E7%9A%84%E6%97%A7%E6%96%87%E7%AB%A0/" class="category-chain-item">搬运的旧文章</a>
+  <a href="/categories/STM32%E6%95%B4%E7%90%86/" class="category-chain-item">STM32整理</a>
   
   
 
@@ -440,9 +484,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/old/" class="print-no-link">#old</a>
-      
-        <a href="/tags/linux/" class="print-no-link">#linux</a>
+        <a href="/tags/stm32/" class="print-no-link">#stm32</a>
       
     </div>
   
@@ -454,8 +496,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>阿里云服务器配置</div>
-      <div>https://cofallen.github.io/2024/07/16/old-config/</div>
+      <div>STM32 HAL库常见函数汇总</div>
+      <div>https://cofallen.github.io/2024/11/07/stm32-hal/</div>
     </div>
     <div class="license-meta">
       
@@ -467,13 +509,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月16日</div>
+          <div>2024年11月7日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月16日</div>
+          <div>2024年11月7日</div>
         </div>
       
       
@@ -504,18 +546,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/07/stm32-hal/" title="STM32 HAL库常见函数汇总">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">STM32 HAL库常见函数汇总</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/15/old-mutex/" title="互斥锁的简单运用">
-                        <span class="hidden-mobile">互斥锁的简单运用</span>
+                      <a href="/2024/07/16/old-config/" title="阿里云服务器配置">
+                        <span class="hidden-mobile">阿里云服务器配置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

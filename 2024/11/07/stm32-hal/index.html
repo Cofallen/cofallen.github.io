@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文包含了常见的STM32 HAL库中基本操作函数的整理，方便查阅。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-11-07T13:22:12.000Z">
-<meta property="article:modified_time" content="2024-11-07T15:11:40.384Z">
+<meta property="article:modified_time" content="2024-11-13T11:10:45.245Z">
 <meta property="article:author" content="cofallen">
 <meta property="article:tag" content="stm32">
 <meta name="twitter:card" content="summary_large_image">
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          764 字
+          1.6k 字
         
       </span>
     
@@ -267,7 +267,7 @@
         
         
         
-          7 分钟
+          14 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-11-08T00:11:40+09:00
+                    本文最后更新于 2024-11-13T20:10:45+09:00
                   
                   
 
@@ -375,6 +375,54 @@
 <td>外部中断回调</td>
 </tr>
 </tbody></table>
+<h2 id="HAL-TIM-Generic-Driver"><a href="#HAL-TIM-Generic-Driver" class="headerlink" title="HAL TIM Generic Driver"></a>HAL TIM Generic Driver</h2><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[HAL_TIM_Base_Init]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_DeInit]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_MspInit]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_MspDeInit]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_Start]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_Stop]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_Start_IT]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_Stop_IT]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_Start_DMA]</td>
+<td></td>
+</tr>
+<tr>
+<td>[HAL_TIM_Base_Stop_DMA]</td>
+<td></td>
+</tr>
+</tbody></table>
 <h3 id="HAL-GPIO-Init"><a href="#HAL-GPIO-Init" class="headerlink" title="HAL_GPIO_Init"></a>HAL_GPIO_Init</h3><h4 id="函数名称"><a href="#函数名称" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_Init</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx, GPIO_InitTypeDef * GPIO_Init)</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="函数描述"><a href="#函数描述" class="headerlink" title="函数描述"></a>函数描述</h4><p>根据 GPIO_Init 中指定的参数初始化 GPIOx 外设。</p>
@@ -391,7 +439,8 @@
 <li>返回值： 无。</li>
 </ul>
 <h3 id="HAL-GPIO-ReadPin"><a href="#HAL-GPIO-ReadPin" class="headerlink" title="HAL_GPIO_ReadPin"></a>HAL_GPIO_ReadPin</h3><h4 id="函数名称-2"><a href="#函数名称-2" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">GPIO_PinState <span class="hljs-title function_">HAL_GPIO_ReadPin</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx, <span class="hljs-type">uint16_t</span> GPIO_Pin)</span><br></code></pre></td></tr></table></figure>
-<h4 id="函数说明-读取指定的输入端口引脚。"><a href="#函数说明-读取指定的输入端口引脚。" class="headerlink" title="函数说明 读取指定的输入端口引脚。"></a>函数说明 读取指定的输入端口引脚。</h4><h4 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h4><ul>
+<h4 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h4><p>读取指定的输入端口引脚。</p>
+<h4 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h4><ul>
 <li>GPIOx：其中 x 可以是 (A..I) 选择 GPIO 外设。</li>
 <li>GPIO_Pin：指定要读取的端口位。此参数可以GPIO_PIN_x，其中 x 可以是 (0..15)。</li>
 <li>返回值：输入端口引脚值。</li>
@@ -399,7 +448,7 @@
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 读取 PB11 状态，若为低电平，执行语句。</span><br><span class="hljs-keyword">if</span> (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_11) == GPIO_PIN_RESET)<br>&#123;<br>  <span class="hljs-comment">// 语句块</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="HAL-GPIO-WritePin"><a href="#HAL-GPIO-WritePin" class="headerlink" title="HAL_GPIO_WritePin"></a>HAL_GPIO_WritePin</h3><h4 id="函数名称-3"><a href="#函数名称-3" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_WritePin</span> <span class="hljs-params">(GPIO_TypeDef * GPIOx， <span class="hljs-type">uint16_t</span> GPIO_Pin， GPIO_PinState PinState)</span><br></code></pre></td></tr></table></figure>
-<h4 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h4><p>设置或清除选定的数据端口位。</p>
+<h4 id="函数说明-1"><a href="#函数说明-1" class="headerlink" title="函数说明"></a>函数说明</h4><p>设置或清除选定的数据端口位。</p>
 <h4 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h4><ul>
 <li>GPIOx：其中 x 可以是 (A..I) 为所有 STM32F2XX 设备选择 GPIO 外设 </li>
 <li>GPIO_Pin：指定要写入的端口位。此参数可以是其中 x 可以是 (0..15) 的GPIO_PIN_x之一。</li>
@@ -441,7 +490,8 @@
 </ul>
 </blockquote>
 <h3 id="HAL-GPIO-EXTI-IRQHandler"><a href="#HAL-GPIO-EXTI-IRQHandler" class="headerlink" title="HAL_GPIO_EXTI_IRQHandler"></a>HAL_GPIO_EXTI_IRQHandler</h3><h4 id="函数名称-6"><a href="#函数名称-6" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">HAL_GPIO_EXTI_IRQHandler</span> <span class="hljs-params">(<span class="hljs-type">uint16_t</span> GPIO_Pin)</span><br></code></pre></td></tr></table></figure>
-<h4 id="函数说明-该函数处理-EXTI-中断请求。"><a href="#函数说明-该函数处理-EXTI-中断请求。" class="headerlink" title="函数说明 该函数处理 EXTI 中断请求。"></a>函数说明 该函数处理 EXTI 中断请求。</h4><h4 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h4><ul>
+<h4 id="函数说明-2"><a href="#函数说明-2" class="headerlink" title="函数说明"></a>函数说明</h4><p>该函数处理 EXTI 中断请求。</p>
+<h4 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h4><ul>
 <li>GPIO_Pin：指定引脚连接的 EXTI 线</li>
 <li>返回值：无。</li>
 </ul>
@@ -450,6 +500,153 @@
 <h4 id="参数-7"><a href="#参数-7" class="headerlink" title="参数"></a>参数</h4><ul>
 <li>GPIO_Pin：指定引脚连接的 EXTI 行 </li>
 <li>返回值：无。</li>
+</ul>
+<h3 id="HAL-TIM-Base-Init"><a href="#HAL-TIM-Base-Init" class="headerlink" title="HAL_TIM_Base_Init"></a>HAL_TIM_Base_Init</h3><h4 id="函数名称-8"><a href="#函数名称-8" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_Init</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数说明-3"><a href="#函数说明-3" class="headerlink" title="函数说明"></a>函数说明</h4><p>根据TIM_HandleTypeDef中指定的参数初始化 TIM 时基单位，并初始化关联的句柄。</p>
+<h4 id="参数-8"><a href="#参数-8" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM 基本手柄</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<blockquote>
+<p>备注 • 从中心对齐计数器模式切换到边缘计数器模式(或反向)需要定时器重置，以避免由于中心对齐模式下 DIR 位只读而导致的意外方向。<br>例如：在 HAL_TIM_Base_Init() 之前调用 HAL_TIM_Base_DeInit() </p>
+</blockquote>
+<h3 id="HAL-TIM-Base-DeInit"><a href="#HAL-TIM-Base-DeInit" class="headerlink" title="HAL_TIM_Base_DeInit"></a>HAL_TIM_Base_DeInit</h3><h4 id="函数名称-9"><a href="#函数名称-9" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_DeInit</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数描述-2"><a href="#函数描述-2" class="headerlink" title="函数描述"></a>函数描述</h4><p>取消初始化 TIM Base 外围设备。</p>
+<h4 id="参数-9"><a href="#参数-9" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM 基本手柄</li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p> 返回值 </p>
+<ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-Base-Start"><a href="#HAL-TIM-Base-Start" class="headerlink" title="HAL_TIM_Base_Start"></a>HAL_TIM_Base_Start</h3><h4 id="函数名称-10"><a href="#函数名称-10" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_Start</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数描述-3"><a href="#函数描述-3" class="headerlink" title="函数描述"></a>函数描述</h4><p>启动 TIM Base 生成。</p>
+<h4 id="参数-10"><a href="#参数-10" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM Base 手柄</li>
+</ul>
+<h4 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-Base-Stop"><a href="#HAL-TIM-Base-Stop" class="headerlink" title="HAL_TIM_Base_Stop"></a>HAL_TIM_Base_Stop</h3><h4 id="函数名称-11"><a href="#函数名称-11" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_Stop</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数说明-4"><a href="#函数说明-4" class="headerlink" title="函数说明"></a>函数说明</h4><p>停止 TIM Base 生成。</p>
+<h4 id="参数-11"><a href="#参数-11" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM 基本手柄</li>
+</ul>
+<h4 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-Base-Start-IT"><a href="#HAL-TIM-Base-Start-IT" class="headerlink" title="HAL_TIM_Base_Start_IT"></a>HAL_TIM_Base_Start_IT</h3><h4 id="函数名称-12"><a href="#函数名称-12" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_Start_IT</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span><br></code></pre></td></tr></table></figure>
+<h4 id="函数描述-4"><a href="#函数描述-4" class="headerlink" title="函数描述"></a>函数描述</h4><p>以中断模式启动 TIM Base 生成。</p>
+<h4 id="参数-12"><a href="#参数-12" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM Base 手柄</li>
+</ul>
+<h4 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-Base-Stop-IT"><a href="#HAL-TIM-Base-Stop-IT" class="headerlink" title="HAL_TIM_Base_Stop_IT"></a>HAL_TIM_Base_Stop_IT</h3><h4 id="函数名称-13"><a href="#函数名称-13" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_Stop_IT</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数描述-5"><a href="#函数描述-5" class="headerlink" title="函数描述"></a>函数描述</h4><p>在中断模式下停止 TIM Base 生成。</p>
+<h4 id="参数-13"><a href="#参数-13" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM 基本手柄</li>
+</ul>
+<h4 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-Base-Start-DMA"><a href="#HAL-TIM-Base-Start-DMA" class="headerlink" title="HAL_TIM_Base_Start_DMA"></a>HAL_TIM_Base_Start_DMA</h3><h4 id="函数名称-14"><a href="#函数名称-14" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_Start_DMA</span> <span class="hljs-params">(TIM_HandleTypeDef * htim， <span class="hljs-type">uint32_t</span> * pData， <span class="hljs-type">uint16_t</span> Length)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数描述-6"><a href="#函数描述-6" class="headerlink" title="函数描述"></a>函数描述</h4><p>在 DMA 模式下启动 TIM Base 生成。</p>
+<h4 id="参数-14"><a href="#参数-14" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM 基本句柄 </li>
+<li>pData：源缓冲区地址。</li>
+<li>Length：要从内存传输到外围设备的数据长度。</li>
+</ul>
+<h4 id="返回值-5"><a href="#返回值-5" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-Base-Stop-DMA"><a href="#HAL-TIM-Base-Stop-DMA" class="headerlink" title="HAL_TIM_Base_Stop_DMA"></a>HAL_TIM_Base_Stop_DMA</h3><h4 id="函数名称-15"><a href="#函数名称-15" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_Base_Stop_DMA</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span><br></code></pre></td></tr></table></figure>
+<h4 id="函数说明-5"><a href="#函数说明-5" class="headerlink" title="函数说明"></a>函数说明</h4><p>在 DMA 模式下停止 TIM Base 生成。</p>
+<h4 id="参数-15"><a href="#参数-15" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM 基本手柄</li>
+</ul>
+<h4 id="返回值-6"><a href="#返回值-6" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-PWM-Init"><a href="#HAL-TIM-PWM-Init" class="headerlink" title="HAL_TIM_PWM_Init"></a>HAL_TIM_PWM_Init</h3><h4 id="函数名称-16"><a href="#函数名称-16" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_PWM_Init</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="功能说明-1"><a href="#功能说明-1" class="headerlink" title="功能说明"></a>功能说明</h4><p>根据TIM_HandleTypeDef中指定的参数初始化 TIM PWM 时基，并初始化关联的句柄。</p>
+<h4 id="参数-16"><a href="#参数-16" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM PWM 手柄</li>
+</ul>
+<h4 id="返回值-7"><a href="#返回值-7" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态 <blockquote>
+<p>备注 • 从中心对齐计数器模式切换到边沿计数器模式(或反向)需要定时器复位，以避免由于中心对齐模式下 DIR 位只读而导致的意外方向。<br>例：在 HAL_TIM_PWM_Init() 之前调用 HAL_TIM_PWM_DeInit()</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="HAL-TIM-PWM-DeInit"><a href="#HAL-TIM-PWM-DeInit" class="headerlink" title="HAL_TIM_PWM_DeInit"></a>HAL_TIM_PWM_DeInit</h3><h4 id="函数名称-17"><a href="#函数名称-17" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_PWM_DeInit</span> <span class="hljs-params">(TIM_HandleTypeDef * htim)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数描述-7"><a href="#函数描述-7" class="headerlink" title="函数描述"></a>函数描述</h4><p>取消初始化 TIM 外围设备。</p>
+<h4 id="参数-17"><a href="#参数-17" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM PWM 手柄</li>
+</ul>
+<h4 id="返回值-8"><a href="#返回值-8" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-PWM-Start"><a href="#HAL-TIM-PWM-Start" class="headerlink" title="HAL_TIM_PWM_Start"></a>HAL_TIM_PWM_Start</h3><h4 id="函数名称-18"><a href="#函数名称-18" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_PWM_Start</span> <span class="hljs-params">(TIM_HandleTypeDef * htim， <span class="hljs-type">uint32_t</span> Channel)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="函数说明-6"><a href="#函数说明-6" class="headerlink" title="函数说明"></a>函数说明</h4><p>开始生成 PWM 信号。</p>
+<h4 id="参数-18"><a href="#参数-18" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM 手柄 </li>
+<li>通道：要启用的 TIM 通道 此参数可以是以下值之一：<ul>
+<li>TIM_CHANNEL_1：选择 TIM 通道 1 </li>
+<li>TIM_CHANNEL_2：选择 TIM 通道 2 </li>
+<li>TIM_CHANNEL_3：选择 TIM 通道 3 </li>
+<li>TIM_CHANNEL_4：选择 TIM 通道 4</li>
+</ul>
+</li>
+</ul>
+<h4 id="返回值-9"><a href="#返回值-9" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-PWM-Stop"><a href="#HAL-TIM-PWM-Stop" class="headerlink" title="HAL_TIM_PWM_Stop"></a>HAL_TIM_PWM_Stop</h3><h4 id="函数名称-19"><a href="#函数名称-19" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_PWM_Stop</span> <span class="hljs-params">(TIM_HandleTypeDef * htim， <span class="hljs-type">uint32_t</span> Channel)</span><br></code></pre></td></tr></table></figure>
+<h4 id="功能说明-2"><a href="#功能说明-2" class="headerlink" title="功能说明"></a>功能说明</h4><p>停止 PWM 信号的生成。</p>
+<h4 id="参数-19"><a href="#参数-19" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM PWM 手柄 </li>
+<li>通道：要禁用的 TIM 通道 此参数可以是以下值之一： <ul>
+<li>TIM_CHANNEL_1：选择 TIM 通道 1 </li>
+<li>TIM_CHANNEL_2：选择 TIM 通道 2 </li>
+<li>TIM_CHANNEL_3：选择 TIM 通道 3 </li>
+<li>TIM_CHANNEL_4：选择 TIM 通道 4</li>
+</ul>
+</li>
+</ul>
+<h4 id="返回值-10"><a href="#返回值-10" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-PWM-Start-IT"><a href="#HAL-TIM-PWM-Start-IT" class="headerlink" title="HAL_TIM_PWM_Start_IT"></a>HAL_TIM_PWM_Start_IT</h3><h4 id="函数名称-20"><a href="#函数名称-20" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_PWM_Start_IT</span> <span class="hljs-params">(TIM_HandleTypeDef * htim， <span class="hljs-type">uint32_t</span> Channel)</span> <br></code></pre></td></tr></table></figure>
+<h4 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a>功能描述</h4><p>在中断模式下启动 PWM 信号生成。</p>
+<h4 id="参数-20"><a href="#参数-20" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM PWM 手柄 </li>
+<li>通道：要启用的 TIM 通道 此参数可以是以下值之一： </li>
+<li>TIM_CHANNEL_1：选择 TIM 通道 1 </li>
+<li>TIM_CHANNEL_2：选择 TIM 通道 2 </li>
+<li>TIM_CHANNEL_3：选择 TIM 通道 3 </li>
+<li>TIM_CHANNEL_4：选择 TIM 通道 4</li>
+</ul>
+<h4 id="返回值-11"><a href="#返回值-11" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
+</ul>
+<h3 id="HAL-TIM-PWM-Stop-IT"><a href="#HAL-TIM-PWM-Stop-IT" class="headerlink" title="HAL_TIM_PWM_Stop_IT"></a>HAL_TIM_PWM_Stop_IT</h3><h4 id="函数名称-21"><a href="#函数名称-21" class="headerlink" title="函数名称"></a>函数名称</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">HAL_StatusTypeDef <span class="hljs-title function_">HAL_TIM_PWM_Stop_IT</span> <span class="hljs-params">(TIM_HandleTypeDef * htim， <span class="hljs-type">uint32_t</span> Channel)</span><br></code></pre></td></tr></table></figure>
+<h4 id="功能说明-3"><a href="#功能说明-3" class="headerlink" title="功能说明"></a>功能说明</h4><p>在中断模式下停止 PWM 信号的生成。</p>
+<h4 id="参数-21"><a href="#参数-21" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>htim：TIM PWM 手柄 </li>
+<li>通道：要禁用的 TIM 通道 此参数可以是以下值之一： <ul>
+<li>TIM_CHANNEL_1：选择 TIM 通道 1 </li>
+<li>TIM_CHANNEL_2：选择 TIM 通道 2 </li>
+<li>TIM_CHANNEL_3：选择 TIM 通道 3 </li>
+<li>TIM_CHANNEL_4：选择 TIM 通道 4</li>
+</ul>
+</li>
+</ul>
+<h4 id="返回值-12"><a href="#返回值-12" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>HAL：状态</li>
 </ul>
 
                 
@@ -515,7 +712,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年11月8日</div>
+          <div>2024年11月13日</div>
         </div>
       
       
